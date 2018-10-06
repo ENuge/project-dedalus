@@ -1,4 +1,8 @@
-'use strict';
+// @flow
+
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import htmlTemplate from './template';
 
 // [START gae_node_request_example]
 const express = require('express');
@@ -6,7 +10,8 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.status(200).send('Hello, world!').end();
+  // res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.send(htmlTemplate('hi!')).end();
 });
 
 // Start the server

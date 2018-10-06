@@ -1,0 +1,17 @@
+extends:
+  - prettier
+  - airbnb
+
+  - prettier/flowtype
+  - prettier/react
+  - plugin:flowtype/recommended
+
+plugins:
+  - prettier
+  - flowtype
+
+parser: babel-eslint
+
+rules:
+  prettier/prettier:
+    - error
