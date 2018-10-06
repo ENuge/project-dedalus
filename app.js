@@ -1,12 +1,13 @@
-'use strict';
-
 // [START gae_node_request_example]
-const express = require('express');
+import express from 'express';
 
 const app = express();
 
 app.get('/', (req, res) => {
-  res.status(200).send('Hello, world!').end();
+  res
+    .status(200)
+    .send('Hello, world!')
+    .end();
 });
 
 // Start the server
