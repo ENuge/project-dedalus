@@ -1,13 +1,13 @@
 {
-  "name": "appengine-hello-world",
-  "description": "Simple Hello World Node.js sample for Google App Engine Standard Environment.",
+  "name": "project-dedalus",
+  "description": "A personal dashboard - may include fitness, podcasts, anki, reading, inspirational quotes.",
   "version": "0.0.1",
   "private": true,
-  "license": "Apache-2.0",
-  "author": "Google Inc.",
+  "license": "MIT",
+  "author": "Eoin Nugent",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
+    "url": "https://github.com/ENuge/project-dedalus.git"
   },
   "engines": {
     "node": "8.x.x"
