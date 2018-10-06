@@ -15,18 +15,22 @@
   },
   "scripts": {
     "deploy": "gcloud app deploy",
-    "start": "babel-node app.js",
+    "pre-start": "babel ./ -d build --ignore 'node_modules/**'",
+    "start": "node build/app.js",
     "dev": "nodemon app.js --exec babel-node",
-    "build": "babel ./ -d build",
     "system-test": "repo-tools test app",
     "test": "npm run system-test",
     "e2e-test": "repo-tools test deploy"
   },
   "dependencies": {
     "express": "^4.16.3",
+    "github-current-user": "^2.5.0",
     "npm": "^6.4.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-react": "^7.0.0",
     "@google-cloud/nodejs-repo-tools": "^2.3.0",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
