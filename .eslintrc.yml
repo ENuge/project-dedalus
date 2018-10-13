@@ -1,10 +1,10 @@
 extends:
-  - prettier
   - airbnb
 
   - prettier/flowtype
   - prettier/react
   - plugin:flowtype/recommended
+  - prettier
 
 plugins:
   - prettier
