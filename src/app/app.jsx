@@ -2,8 +2,8 @@
 
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import htmlTemplate from '../client/template';
 import ReactBase from '../client/ReactBase';
+import htmlTemplate from '../client/template';
 
 // [START gae_node_request_example]
 const express = require('express');

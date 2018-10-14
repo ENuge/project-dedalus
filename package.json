@@ -16,7 +16,7 @@
   "scripts": {
     "dist": "webpack",
     "deploy": "gcloud app deploy",
-    "prod-server-build": "babel --config-file ./.babelrc ./src/app/ -d build",
+    "prod-server-build": "babel --config-file ./.babelrc ./src/ -d build",
     "prestart": "npm-run-all dist prod-server-build",
     "start": "node build/app.js",
     "dev": "npm-run-all dist --parallel watch:build watch:server",
