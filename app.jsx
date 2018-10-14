@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import path from 'path';
 import htmlTemplate from './template';
 import ReactBase from './ReactBase';
 
@@ -20,7 +19,6 @@ const handleRender = (req, res) => {
 
 app.get('/', handleRender);
 
-console.log(express.static(path.join(__dirname, 'public')));
 app.use('/public', express.static('public'));
 
 // app.get('/ajax', (req, res) => {
@@ -29,7 +27,4 @@ app.use('/public', express.static('public'));
 
 // Start the server
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-  console.log('Press Ctrl+C to quit.');
-});
+app.listen(PORT);
