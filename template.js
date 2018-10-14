@@ -9,7 +9,7 @@ const htmlTemplate = (reactDom: string) => `
       
       <body>
         <div id="app">${reactDom}</div>
-        <script src="<TODO_LOCATION>"></script>
+        <script src="public/bundle.js"></script>
       </body>
     </html>
   `;

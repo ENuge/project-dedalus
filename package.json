@@ -5,6 +5,7 @@
   "private": true,
   "license": "MIT",
   "author": "Eoin Nugent",
+  "browserslist": "> 0.25%, not dead",
   "repository": {
     "type": "git",
     "url": "https://github.com/ENuge/project-dedalus.git"
@@ -13,10 +14,11 @@
     "node": "8.x.x"
   },
   "scripts": {
+    "dist": "webpack --config webpack.config.js",
     "deploy": "gcloud app deploy",
-    "pre-start": "babel ./ -d build",
+    "prestart": "npm run dist && babel --config-file ./.babelrc ./ -d build --ignore build/",
     "start": "node build/app.js",
-    "dev": "nodemon app.js --exec babel-node",
+    "dev": "npm run dist && nodemon app.jsx --exec babel-node",
     "lint": "repo-tools lint",
     "pretest": "npm run lint",
     "system-test": "repo-tools test app",
@@ -31,12 +33,28 @@
     "react-dom": "^16.5.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-transform-object-assign": "^7.0.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "@google-cloud/nodejs-repo-tools": "^2.3.0",
-    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-flow": "^6.23.0",
-    "babel-preset-stage-2": "^6.24.1",
+    "babel-loader": "^8.0.4",
+    "babel-preset-airbnb": "^3.0.1",
     "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
@@ -48,7 +66,9 @@
     "flow": "^0.2.3",
     "nodemon": "^1.18.4",
     "prettier": "^1.14.3",
-    "semistandard": "^12.0.1"
+    "semistandard": "^12.0.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   },
   "cloud-repo-tools": {
     "test": {
