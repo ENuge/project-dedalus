@@ -3,50 +3,42 @@ import util from 'util';
 import axios from 'axios';
 import fs from 'fs';
 
-const processQotdResponse = (response: Object): ?string => {
-  // Return just the part of the quote of the day that we actually
-  // care about.
-  try {
-    return response.contents.quotes[0].quote;
-  } catch {
-    console.log(
-      `Unexpected response format for Quote of the day! It looks like: ${JSON.stringify(response)}`
-    );
-    return null;
-  }
-};
-
-const fetchQotd = async (): Promise<?string> => {
+const fetchQotd = async (): Promise<?Object> => {
   // Fetch the quote of the day from the network and return it.
   const response = await axios.get('https://quotes.rest/qod?category=inspire');
   if (response.err) {
     return null;
   }
-  return processQotdResponse(response);
+  return response;
 };
 
-const readCachedQotd = (file: string): ?string => {
+const readCachedQotd = (file: string): ?Object => {
   // Return the cached quote of the day, if it is from
   // today. Otherwise, return null.
-  const [firstLine, ...rest] = file.split('\n');
-  const restLines = rest.join('');
-  // secondLine in the file should be formatted exactly like the expected
-  // response from the quote of the day API.
-  const processedSecondLine = processQotdResponse(JSON.parse(restLines));
-  const readDate = new Date(firstLine);
+  const cachedResponse = JSON.parse(file);
+  if (
+    !cachedResponse ||
+    !cachedResponse.contents.quotes[0].date ||
+    !cachedResponse.contents.quotes[0].quote
+  ) {
+    console.log('Stored data in unexpected format! Failing early.');
+    return null;
+  }
+
+  const cachedDate = new Date(cachedResponse.contents.quotes[0].date);
   const nowDate = new Date(Date.now());
   if (
-    readDate.getFullYear() === nowDate.getFullYear() &&
-    readDate.getMonth() === nowDate.getMonth() &&
-    readDate.getUTCDate() === nowDate.getUTCDate()
+    cachedDate.getFullYear() === nowDate.getFullYear() &&
+    cachedDate.getMonth() === nowDate.getMonth() &&
+    cachedDate.getUTCDate() === nowDate.getUTCDate()
   ) {
-    return processedSecondLine;
+    return cachedResponse;
   }
 
   return null;
 };
 
-const getCachedQotd = async (): Promise<?string> => {
+const getCachedQotd = async (): Promise<?Object> => {
   // Get the quote of the day we have printed out to file.
   const readFile = util.promisify(fs.readFile);
   const fileResponse = await readFile('./cached/qotd', 'utf8');
@@ -64,13 +56,13 @@ const handleQotd = async (req: Object, res: Object): Promise<null> => {
   // a way of circumventing the API rate limiting for public use.
   const cachedQotd = await getCachedQotd();
   if (cachedQotd) {
-    res.send({qotd: cachedQotd});
+    res.send(cachedQotd);
     return null;
   }
 
   const todaysQotd = await fetchQotd();
   // updateCachedQotd(todaysQotd);
-  res.send({qotd: todaysQotd});
+  res.send(todaysQotd);
   return null;
 };
 
