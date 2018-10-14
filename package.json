@@ -16,9 +16,9 @@
   "scripts": {
     "dist": "webpack",
     "deploy": "gcloud app deploy",
-    "prod-server-build": "babel --config-file ./.babelrc ./src/ -d build",
+    "prod-server-build": "babel --delete-dir-on-start --config-file ./.babelrc ./src/ -d build",
     "prestart": "npm-run-all dist prod-server-build",
-    "start": "node build/app.js",
+    "start": "node build/app/app.js",
     "dev": "npm-run-all dist --parallel watch:build watch:server",
     "debug": "npm-run-all dist --parallel watch:build watch:server-debug",
     "watch:server-debug": "nodemon --inspect ./src/app/app.jsx --exec babel-node",
@@ -31,6 +31,7 @@
     "e2e-test": "repo-tools test deploy"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "express": "^4.16.3",
     "github-current-user": "^2.5.0",
@@ -60,6 +61,7 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-airbnb": "^3.0.1",
     "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
