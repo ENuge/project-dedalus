@@ -18,10 +18,15 @@ const readCachedQotd = (file: string): ?Object => {
   const cachedResponse = JSON.parse(file);
   if (
     !cachedResponse ||
+    !cachedResponse.contents ||
+    !cachedResponse.contents.quotes ||
+    cachedResponse.contents.quotes.length === 0 ||
     !cachedResponse.contents.quotes[0].date ||
     !cachedResponse.contents.quotes[0].quote
   ) {
-    console.log('Stored data in unexpected format! Failing early.');
+    console.log(
+      `Stored data in unexpected format! Failing early. data is: ${JSON.stringify(cachedResponse)}`
+    );
     return null;
   }
 

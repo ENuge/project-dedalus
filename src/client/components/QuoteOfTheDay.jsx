@@ -3,38 +3,43 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 type State = {
-  qotd: ?Object, // TODO: type better?
+  quoteObject: {quote: ?string, author: ?string},
 };
 
 class QuoteOfTheDay extends Component<{}, State> {
-  state = {
-    qotd: null,
-  };
+  constructor() {
+    super();
+    this.state = {
+      quoteObject: {quote: null, author: null},
+    };
+  }
 
   componentDidMount() {
     axios
       .get('/ajax/qotd')
       .then(response => {
         // TODO: See how this is actually formatted...
-        this.setState({qotd: response});
+        this.setState({quoteObject: response.data.contents.quotes[0]});
       })
       .catch(error => {
         console.log(`Error fetching quote of the day: ${error}`);
       });
   }
 
-  formatQotd() {
-    const {qotd} = this.state;
-    if (!qotd) {
+  render() {
+    const {
+      quoteObject: {quote, author},
+    } = this.state;
+    if (!quote) {
       return null;
     }
-    return qotd;
-  }
 
-  render() {
-    const qotdFormatted = this.formatQotd();
-
-    return qotdFormatted;
+    return (
+      <React.Fragment>
+        <em>{quote}</em>
+        <p>- {author}</p>
+      </React.Fragment>
+    );
   }
 }
 
