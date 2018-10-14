@@ -4,6 +4,8 @@ import axios from 'axios';
 import fs from 'fs';
 
 const processQotdResponse = (response: Object): ?string => {
+  // Return just the part of the quote of the day that we actually
+  // care about.
   try {
     return response.contents.quotes[0].quote;
   } catch {
@@ -14,7 +16,18 @@ const processQotdResponse = (response: Object): ?string => {
   }
 };
 
-const readTodaysQotd = (file: string): ?string => {
+const fetchQotd = async (): Promise<?string> => {
+  // Fetch the quote of the day from the network and return it.
+  const response = await axios.get('https://quotes.rest/qod?category=inspire');
+  if (response.err) {
+    return null;
+  }
+  return processQotdResponse(response);
+};
+
+const readCachedQotd = (file: string): ?string => {
+  // Return the cached quote of the day, if it is from
+  // today. Otherwise, return null.
   const [firstLine, ...rest] = file.split('\n');
   const restLines = rest.join('');
   // secondLine in the file should be formatted exactly like the expected
@@ -33,40 +46,32 @@ const readTodaysQotd = (file: string): ?string => {
   return null;
 };
 
-const fetchQotd = (): Promise => {
-  // Fetches the Quote of the Day from the QOTD of the API.
-  const requestPromise = axios
-    .get('https://quotes.rest/qod?category=inspire')
-    .then(
-      response =>
-        // TODO: See how this is actually formatted...
-        response.data.contents.quotes[0].quote
-    )
-    .catch(error => {
-      console.log(`Error fetching quote of the day: ${error}`);
-      return null;
-    });
-  return requestPromise;
+const getCachedQotd = async (): Promise<?string> => {
+  // Get the quote of the day we have printed out to file.
+  const readFile = util.promisify(fs.readFile);
+  const fileResponse = await readFile('./cached/qotd', 'utf8');
+  if (fileResponse.err) {
+    console.log(`Error reading cached quote of the day: ${fileResponse.err}`);
+    return null;
+  }
+  return readCachedQotd(fileResponse);
 };
 
-const handleQotd = (req, res) => {
-  let qotdRead = null;
-  const readFile = util.promisify(fs.readFile);
-  readFile('./cached/qotd', 'utf8')
-    .then(file => {
-      qotdRead = readTodaysQotd(file);
-      return null;
-    })
-    .catch(error => console.log(error))
-    .finally(() => {
-      if (!qotdRead) {
-        // Make axios call for qotd.
-        const qotdPromise = fetchQotd();
-        qotdPromise.then(result => res.send({qotd: result}));
-      } else {
-        res.send({qotd: qotdRead});
-      }
-    });
+const handleQotd = async (req: Object, res: Object): Promise<null> => {
+  // Try to read the quote of the day first from file. I do this
+  // for "performance" (not that I actually care), but also for
+  // debugging. This is intended purely for personal use - it's not
+  // a way of circumventing the API rate limiting for public use.
+  const cachedQotd = await getCachedQotd();
+  if (cachedQotd) {
+    res.send({qotd: cachedQotd});
+    return null;
+  }
+
+  const todaysQotd = await fetchQotd();
+  // updateCachedQotd(todaysQotd);
+  res.send({qotd: todaysQotd});
+  return null;
 };
 
 export default handleQotd;
