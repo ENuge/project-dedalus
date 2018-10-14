@@ -5,11 +5,20 @@ import fs from 'fs';
 
 const fetchQotd = async (): Promise<?Object> => {
   // Fetch the quote of the day from the network and return it.
-  const response = await axios.get('https://quotes.rest/qod?category=inspire');
-  if (response.err) {
+  let response = null;
+  try {
+    response = await axios('https://quotes.rest/qod?category=inspire');
+  } catch (error) {
+    console.log(`Response failed with error: ${error}`);
     return null;
   }
   return response;
+};
+
+const updateCachedQotd = async (qotdString: string): void => {
+  fs.writeFile('./cached/qotd', qotdString, err => {
+    console.log(`Error writing to file! ${JSON.stringify(err)}`);
+  });
 };
 
 const readCachedQotd = (file: string): ?Object => {
@@ -46,11 +55,14 @@ const readCachedQotd = (file: string): ?Object => {
 const getCachedQotd = async (): Promise<?Object> => {
   // Get the quote of the day we have printed out to file.
   const readFile = util.promisify(fs.readFile);
-  const fileResponse = await readFile('./cached/qotd', 'utf8');
-  if (fileResponse.err) {
-    console.log(`Error reading cached quote of the day: ${fileResponse.err}`);
+  let fileResponse = null;
+  try {
+    fileResponse = await readFile('./cached/qotd', 'utf8');
+  } catch (error) {
+    console.log(`Error reading cached quote of the day. Error: ${error}`);
     return null;
   }
+
   return readCachedQotd(fileResponse);
 };
 
@@ -60,13 +72,16 @@ const handleQotd = async (req: Object, res: Object): Promise<null> => {
   // debugging. This is intended purely for personal use - it's not
   // a way of circumventing the API rate limiting for public use.
   const cachedQotd = await getCachedQotd();
+
   if (cachedQotd) {
     res.send(cachedQotd);
     return null;
   }
 
   const todaysQotd = await fetchQotd();
-  // updateCachedQotd(todaysQotd);
+  if (todaysQotd) {
+    await updateCachedQotd(JSON.stringify(todaysQotd));
+  }
   res.send(todaysQotd);
   return null;
 };
