@@ -21,10 +21,10 @@ This provides a good check that I'm doing what I set out to do. It also provides
 
 1. Clone the project.
 2. Be me (be OAuth'ed into this project or create an AppEngine account of your own - in which case run `gcloud init` after downloading the `gcloud` tool).
-3. `npm start` - make sure the project looks good in production mode on localhost (serving the post-babel-etc-transpiled code).
+3. `npm run start` - make sure the project looks good in production mode on localhost (serving the post-babel-etc-transpiled code).
 4. (At top-level), `gcloud app deploy`.
 5. `gcloud app browse` to see the deployed homepage.
 
 ## Running Locally
 
-1. `npm install && npm run-script dev`. This should start a daemon that will update as you save files.
+1. `npm install && npm run dev`. This should start a daemon that will update as you save files (server-built or frontend code).
