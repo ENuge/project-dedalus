@@ -3,7 +3,7 @@ const fs = require('fs');
 
 module.exports = {
   mode: 'development',
-  entry: './index.jsx',
+  entry: './src/client/index.jsx',
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
