@@ -28,3 +28,13 @@ This provides a good check that I'm doing what I set out to do. It also provides
 ## Running Locally
 
 1. `npm install && npm run dev`. This should start a daemon that will update as you save files (server-built or frontend code).
+
+### Debugging Locally
+
+**NOTE**: This may require Chrome. Not sure. It's based on https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27 .
+You can stick `debugger;` statements into the source, and then debug via:
+
+1. `npm run debug` (Kicks off a hot-restarting run like `npm run dev`, but with magical debugging capabilities).
+2. Open `about:inspect` in Chrome.
+3. Click on "Open dedicated DevTools for Node".
+4. In your browser, navigate to your normal page address. Watch as your new Chrome inspector window gets caught on your debugger. ⚡✨

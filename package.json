@@ -20,6 +20,8 @@
     "prestart": "npm-run-all dist prod-server-build",
     "start": "node build/app.js",
     "dev": "npm-run-all dist --parallel watch:build watch:server",
+    "debug": "npm-run-all dist --parallel watch:build watch:server-debug",
+    "watch:server-debug": "nodemon --inspect ./src/app/app.jsx --exec babel-node",
     "watch:build": "webpack --watch",
     "watch:server": "nodemon ./src/app/app.jsx --exec babel-node",
     "lint": "repo-tools lint",
@@ -29,6 +31,7 @@
     "e2e-test": "repo-tools test deploy"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "express": "^4.16.3",
     "github-current-user": "^2.5.0",
     "npm": "^6.4.1",
