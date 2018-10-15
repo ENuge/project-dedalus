@@ -1,8 +1,11 @@
 // @flow
 import React, {Component} from 'react';
 import axios from 'axios';
+import dateFormat from 'dateformat';
 
 type State = {activities: ?Object};
+
+const formatDatetime = (datetime: string) => dateFormat(datetime, 'UTC:ddd mm/d HH:MM');
 
 class Strava extends Component<{}, State> {
   constructor() {
@@ -33,10 +36,9 @@ class Strava extends Component<{}, State> {
           <tr>
             <th>Activity</th>
             <th>Datetime</th>
-            <th>Duration</th>
+            <th>Duration (mins)</th>
             <th>Avg Heartrate</th>
             <th>Max Heartrate</th>
-            <th>Strava Link</th>
             <th>Description</th>
             <th>Total elapsed workout time (today)</th>
           </tr>
@@ -44,12 +46,13 @@ class Strava extends Component<{}, State> {
         <tbody>
           {activities.map(activity => (
             <tr>
-              <td>{activity.type}</td>
-              <td>{activity.start_date_local}</td>
-              <td>{activity.elapsed_time / 60} mins</td>
+              <td>
+                <a href={`https://strava.com/activities/${activity.id}`}>{activity.type}</a>
+              </td>
+              <td>{formatDatetime(activity.start_date_local)}</td>
+              <td>{Math.round(activity.elapsed_time / 60)}</td>
               <td>{activity.average_heartrate}</td>
               <td>{activity.max_heartrate}</td>
-              <td>{`https://strava.com/activities/${activity.id}`}</td>
               <td>{activity.description}</td>
               <td>TODO</td>
             </tr>
