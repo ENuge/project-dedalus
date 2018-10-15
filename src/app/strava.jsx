@@ -22,4 +22,14 @@ export const getStrava = async (req: $Request, res: $Response) => {
     }
   });
 };
-export const postStrava = (req: $Request, res: $Response) => res.send('TODO');
+export const postStrava = (req: $Request, res: $Response) => {
+  debugger;
+  strava.athlete.update({description: req.body.description}, result => {
+    if (result.err) {
+      console.log(`Error updating description in Strava: ${JSON.stringify(result.err)}`);
+      res.send({success: false});
+    } else {
+      res.send({success: true});
+    }
+  });
+};
