@@ -1,7 +1,7 @@
 // @flow
 
-import axios from 'axios';
 import strava from 'strava-v3';
+import type {$Request, $Response} from 'express';
 
 // Get data from strava using my API key (read from a local file
 // that is not committed to git). Post that, for now, in just a
@@ -12,7 +12,7 @@ import strava from 'strava-v3';
 // (Description can be useful for summarizing workouts - especially
 // if client can prefill based on the type of activity done.)
 
-export const getStrava = async (req, res) => {
+export const getStrava = async (req: $Request, res: $Response) => {
   console.log('hi!');
   strava.athlete.listActivities({}, (err, payload) => {
     if (!err) {
@@ -22,4 +22,4 @@ export const getStrava = async (req, res) => {
     }
   });
 };
-export const postStrava = (req, res) => res.send('TODO');
+export const postStrava = (req: $Request, res: $Response) => res.send('TODO');

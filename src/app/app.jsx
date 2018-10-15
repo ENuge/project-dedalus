@@ -3,6 +3,7 @@
 import '@babel/polyfill';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
+import type {$Request, $Response} from 'express';
 
 import ReactBase from '../client/ReactBase';
 import htmlTemplate from '../client/template';
@@ -14,7 +15,7 @@ const express = require('express');
 
 const app = express();
 
-const handleRender = (req, res) => {
+const handleRender = (req: $Request, res: $Response) => {
   // res.writeHead(200, { 'Content-Type': 'text/plain' });
   const reactRenderedHtml = renderToString(<ReactBase />);
   const document = htmlTemplate(reactRenderedHtml);
@@ -23,7 +24,7 @@ const handleRender = (req, res) => {
 
 app.get('/', handleRender);
 
-app.get('/ajax/foo', (req, res) => res.send('hi'));
+app.get('/ajax/foo', (req: $Request, res: $Response) => res.send('hi'));
 
 app.get('/ajax/qotd', handleQotd);
 

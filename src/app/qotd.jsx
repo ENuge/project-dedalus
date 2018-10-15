@@ -2,6 +2,7 @@
 import util from 'util';
 import axios from 'axios';
 import fs from 'fs';
+import type {$Request, $Response} from 'express';
 
 const fetchQotd = async (): Promise<?Object> => {
   // Fetch the quote of the day from the network and return it.
@@ -15,7 +16,7 @@ const fetchQotd = async (): Promise<?Object> => {
   return response.data;
 };
 
-const updateCachedQotd = async (qotdString: string): void => {
+const updateCachedQotd = async (qotdString: string): Promise<void> => {
   fs.writeFile('./cached/qotd', qotdString, err => {
     console.log(`Error writing to file! ${JSON.stringify(err)}`);
   });
@@ -66,7 +67,7 @@ const getCachedQotd = async (): Promise<?Object> => {
   return readCachedQotd(fileResponse);
 };
 
-const handleQotd = async (req: Object, res: Object): Promise<null> => {
+const handleQotd = async (req: $Request, res: $Response): Promise<null> => {
   // Try to read the quote of the day first from file. I do this
   // for "performance" (not that I actually care), but also for
   // debugging. This is intended purely for personal use - it's not
