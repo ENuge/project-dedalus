@@ -37,7 +37,8 @@
     "github-current-user": "^2.5.0",
     "npm": "^6.4.1",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "strava-v3": "^1.14.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
