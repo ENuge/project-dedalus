@@ -18,7 +18,6 @@ class QuoteOfTheDay extends Component<{}, State> {
     axios
       .get('/ajax/qotd')
       .then(response => {
-        // TODO: See how this is actually formatted...
         this.setState({quoteObject: response.data.contents.quotes[0]});
       })
       .catch(error => {

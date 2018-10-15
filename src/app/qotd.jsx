@@ -12,7 +12,7 @@ const fetchQotd = async (): Promise<?Object> => {
     console.log(`Response failed with error: ${error}`);
     return null;
   }
-  return response;
+  return response.data;
 };
 
 const updateCachedQotd = async (qotdString: string): void => {
