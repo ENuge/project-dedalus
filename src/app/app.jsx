@@ -5,7 +5,6 @@ import React from 'react';
 import {renderToString} from 'react-dom/server';
 import express from 'express';
 import type {$Request, $Response} from 'express';
-import bodyParser from 'body-parser';
 
 import ReactBase from '../client/ReactBase';
 import htmlTemplate from '../client/template';
@@ -15,7 +14,7 @@ import {getAnki, postAnki} from './anki';
 
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.json());
 
 const handleRender = (req: $Request, res: $Response) => {
   // res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -31,7 +30,7 @@ app.get('/ajax/foo', (req: $Request, res: $Response) => res.send('hi'));
 app.get('/ajax/qotd', handleQotd);
 
 app.get('/ajax/strava', getStrava);
-app.get('/ajax/strava', postStrava);
+app.post('/ajax/strava', postStrava);
 
 app.get('/ajax/anki', getAnki);
 app.post('/ajax/anki', postAnki);
