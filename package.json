@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "@google-cloud/storage": "^2.1.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "dateformat": "^3.0.3",

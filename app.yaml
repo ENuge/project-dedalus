@@ -1,4 +1,1 @@
 runtime: nodejs8
-
-env_variables:
-  GCLOUD_STORAGE_BUCKET: 'gs://project_dedalus_cached'
