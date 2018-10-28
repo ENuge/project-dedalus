@@ -10,7 +10,7 @@ import ReactBase from '../client/ReactBase';
 import htmlTemplate from '../client/template';
 import handleQotd from './qotd';
 import {getStrava, postStrava} from './strava';
-import {getAnki, postAnki} from './anki';
+// import {getAnki, postAnki} from './anki';
 
 const app = express();
 
@@ -32,8 +32,9 @@ app.get('/ajax/qotd', handleQotd);
 app.get('/ajax/strava', getStrava);
 app.post('/ajax/strava', postStrava);
 
-app.get('/ajax/anki', getAnki);
-app.post('/ajax/anki', postAnki);
+// TODO: Eventually I will get to implementing these.
+// app.get('/ajax/anki', getAnki);
+// app.post('/ajax/anki', postAnki);
 
 app.use('/public', express.static('public'));
 

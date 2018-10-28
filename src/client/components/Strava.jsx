@@ -3,9 +3,41 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import dateFormat from 'dateformat';
 
-type State = {activities: Array<?Object>};
+// There are a couple of additional fields that I'm not bothering typing because
+// I don't think they'll ever be useful (`resource_state`, for instance).
+type Activity = {|
+  name: string,
+  athlete: {
+    id: number,
+  },
+  distance: number,
+  moving_time: number, // moving_time and elapsed_time may always be identical?
+  elapsed_time: number,
+  total_elevation_gain: number, // (Is this ever non-0, given I've no altimeter)
+  type: string, // May always be "Workout"
+  id: number, // Used to generate the links to Strava
+  start_date: string, // formatted, by default, like "2018-10-28T02:23:12Z"
+  start_date_local: string, // takes the time from UTC to PST
+  timezone: string, // ex: "(GMT-08:00) America/Los_Angeles"
+  start_latlng: ?Object, // TODO: Type this Object. It might just be a string?
+  // There's also start_latitude and start_longitude, dunno why??
+  end_latlng: ?Object,
+  location_city: ?string,
+  location_state: ?string,
+  location_country: ?string,
+  private: boolean,
+  average_speed: number,
+  max_speed: number,
+  has_heartrate: boolean,
+  average_heartrate: number,
+  max_heartrate: number,
+  calories: number,
+  description?: ?string, // listActivities does not return this, but getActivity(id) does.
+|};
+type Activities = Array<Activity>;
+type State = {activities: Array<Activity>};
 
-const formatDatetime = (datetime: string) => dateFormat(datetime, 'UTC:ddd mm/d HH:MM');
+const formatDatetime = (datetime: string): string => dateFormat(datetime, 'UTC:ddd mm/d HH:MM');
 
 class Strava extends Component<{}, State> {
   constructor() {
@@ -18,14 +50,12 @@ class Strava extends Component<{}, State> {
       .get('/ajax/strava')
       .then(response => {
         console.log(`Ajax list activities response: ${JSON.stringify(response.data[0])}`);
-        // TODO: Some fields like `description` are only accessible on the get/activity/{id}
-        // endpoint. So, go back and call that once per activity to actually hydrate the activities...smh.
         this.setState({activities: response.data});
       })
       .catch();
   }
 
-  handleDescriptionSubmit(currentActivity, event) {
+  handleDescriptionSubmit(currentActivity: Activity, event: SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
     const {activities} = this.state;
     const updatedActivity = activities.find(
@@ -34,9 +64,10 @@ class Strava extends Component<{}, State> {
     axios.post('/ajax/strava', updatedActivity);
   }
 
-  handleDescriptionChange(currentActivity, event) {
-    // TODO: Pass with event the actual activity that caused
-    // this, use that to update state properly.
+  handleDescriptionChange(currentActivity: Activity, event: SyntheticInputEvent<HTMLInputElement>) {
+    // Note that only a submit POSTs the data back to Strava - make that clear in the UX.
+    // (Right now it's not at all obvious!)
+    event.preventDefault(); // Just to be safe
     const {activities} = this.state;
     const newActivities = activities.reduce((accum, activity) => {
       if (activity.id === currentActivity.id) {
@@ -68,7 +99,7 @@ class Strava extends Component<{}, State> {
         </thead>
         <tbody>
           {activities.map(activity => (
-            <tr>
+            <tr key={activity.id}>
               <td>
                 <a href={`https://strava.com/activities/${activity.id}`}>{activity.type}</a>
               </td>
@@ -79,11 +110,12 @@ class Strava extends Component<{}, State> {
               <td>{activity.description}</td>
               <td>
                 <form onSubmit={this.handleDescriptionSubmit.bind(this, activity)}>
-                  <label>
+                  <label htmlFor={`${activity.id}-activity-description`}>
                     Edit:{' '}
                     <input
+                      id={`${activity.id}-activity-description`}
                       type="text"
-                      value={activity.description}
+                      value={activity.description || ''}
                       onChange={this.handleDescriptionChange.bind(this, activity)}
                     />
                   </label>

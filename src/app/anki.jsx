@@ -1,6 +1,6 @@
 // @flow
 
-import axios from 'axios';
+// import axios from 'axios';
 
 // This will be a GET and a POST
 // POST: Accepts the latest day's worth of Anki updates,
@@ -12,6 +12,6 @@ import axios from 'axios';
 // GET: Feeds that information over to the website in a nice-looking
 // way.
 
-export const getAnki = (req, res) => res.send('TODO');
+// export const getAnki = (req, res) => res.send('TODO');
 
-export const postAnki = (req, res) => res.send('TODO');
+// export const postAnki = (req, res) => res.send('TODO');
