@@ -5,6 +5,7 @@ const htmlTemplate = (reactDom: string) => `
         <head>
           <meta charset="utf-8">
           <title>Project Dedalus</title>
+          <link rel="shortcut icon" type="image/ico" href="public/favicon.ico"/>
         </head>
       
       <body>
