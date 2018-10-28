@@ -1,0 +1,50 @@
+/* Color scheme created using coolors.com, based on rolling the
+dice around the solarizeds until I was satisfied. */
+:root {
+  --bg-light: #fdf6e3; /* solarized-light */
+  --bg-dark: #002b36; /* solarized-dark */
+  --bg-header: #07a0c3;
+  --accent-bright: #f0c808;
+  --accent-medium: #086788;
+
+  /* Layout-related constants */
+  --header-height: 100px;
+}
+
+/* Base CSS Resets */
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+#header {
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--bg-header);
+}
+
+.header-hero {
+  margin: 0 auto;
+}
+
+/* This looks kinda neat, like the text above MIT buildings,
+at ~60% screen size, and kinda dumb as the page gets smaller. */
+.banner-text {
+  color: var(--bg-light); /* TODO: If this actually looks ok, I should change the var names... */
+  text-transform: uppercase;
+  text-align: center;
+  line-height: var(--header-height); /* Centers the text via css trickery */
+  font-size: 8em;
+}
+
+.content {
+  width: 100%; /* Do I need these width: 100%s...? */
+  background-color: var(--bg-light);
+}
