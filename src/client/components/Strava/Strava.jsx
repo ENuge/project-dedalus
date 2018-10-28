@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import StravaTable from './StravaTable';
+import StravaDailyActivity from './StravaDailyActivity';
 
 // There are a couple of additional fields that I'm not bothering typing because
 // I don't think they'll ever be useful (`resource_state`, for instance).
@@ -88,11 +89,14 @@ class Strava extends Component<{}, State> {
       return null;
     }
     return (
-      <StravaTable
-        activities={activities}
-        onChange={this.handleDescriptionChange}
-        onSubmit={this.handleDescriptionSubmit}
-      />
+      <React.Fragment>
+        <StravaDailyActivity activities={activities} />
+        <StravaTable
+          activities={activities}
+          onChange={this.handleDescriptionChange}
+          onSubmit={this.handleDescriptionSubmit}
+        />
+      </React.Fragment>
     );
   }
 }

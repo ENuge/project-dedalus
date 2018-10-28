@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import QuoteOfTheDay from './components/QuoteOfTheDay';
-import Strava from './components/Strava';
+import Strava from './components/Strava/Strava';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
