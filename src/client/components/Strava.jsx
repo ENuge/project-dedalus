@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import axios from 'axios';
-import dateFormat from 'dateformat';
+import StravaTable from './StravaTable';
 
 // There are a couple of additional fields that I'm not bothering typing because
 // I don't think they'll ever be useful (`resource_state`, for instance).
@@ -34,15 +34,16 @@ type Activity = {|
   calories: number,
   description?: ?string, // listActivities does not return this, but getActivity(id) does.
 |};
-type Activities = Array<Activity>;
-type State = {activities: Array<Activity>};
-
-const formatDatetime = (datetime: string): string => dateFormat(datetime, 'UTC:ddd mm/d HH:MM');
+export type Activities = Array<Activity>;
+type State = {activities: Activities};
 
 class Strava extends Component<{}, State> {
   constructor() {
     super();
     this.state = {activities: []};
+
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleDescriptionSubmit = this.handleDescriptionSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -55,16 +56,10 @@ class Strava extends Component<{}, State> {
       .catch();
   }
 
-  handleDescriptionSubmit(currentActivity: Activity, event: SyntheticEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const {activities} = this.state;
-    const updatedActivity = activities.find(
-      activity => activity && activity.id === currentActivity.id
-    );
-    axios.post('/ajax/strava', updatedActivity);
-  }
-
-  handleDescriptionChange(currentActivity: Activity, event: SyntheticInputEvent<HTMLInputElement>) {
+  handleDescriptionChange = (
+    currentActivity: Activity,
+    event: SyntheticInputEvent<HTMLInputElement>
+  ) => {
     // Note that only a submit POSTs the data back to Strava - make that clear in the UX.
     // (Right now it's not at all obvious!)
     event.preventDefault(); // Just to be safe
@@ -76,56 +71,28 @@ class Strava extends Component<{}, State> {
       return [...accum, activity];
     }, []);
     this.setState({activities: newActivities});
-  }
+  };
+
+  handleDescriptionSubmit = (currentActivity: Activity, event: SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const {activities} = this.state;
+    const updatedActivity = activities.find(
+      activity => activity && activity.id === currentActivity.id
+    );
+    axios.post('/ajax/strava', updatedActivity);
+  };
 
   render() {
     const {activities} = this.state;
     if (activities.length === 0) {
       return null;
     }
-    console.log(`activities is: ${JSON.stringify(activities)}`);
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Activity</th>
-            <th>Datetime</th>
-            <th>Duration (mins)</th>
-            <th>Avg Heartrate</th>
-            <th>Max Heartrate</th>
-            <th>Description</th>
-            <th>Total elapsed workout time (today)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {activities.map(activity => (
-            <tr key={activity.id}>
-              <td>
-                <a href={`https://strava.com/activities/${activity.id}`}>{activity.type}</a>
-              </td>
-              <td>{formatDatetime(activity.start_date_local)}</td>
-              <td>{Math.round(activity.elapsed_time / 60)}</td>
-              <td>{activity.average_heartrate}</td>
-              <td>{activity.max_heartrate}</td>
-              <td>{activity.description}</td>
-              <td>
-                <form onSubmit={this.handleDescriptionSubmit.bind(this, activity)}>
-                  <label htmlFor={`${activity.id}-activity-description`}>
-                    Edit:{' '}
-                    <input
-                      id={`${activity.id}-activity-description`}
-                      type="text"
-                      value={activity.description || ''}
-                      onChange={this.handleDescriptionChange.bind(this, activity)}
-                    />
-                  </label>
-                  <input type="submit" value="Submit" />
-                </form>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <StravaTable
+        activities={activities}
+        onChange={this.handleDescriptionChange}
+        onSubmit={this.handleDescriptionSubmit}
+      />
     );
   }
 }
