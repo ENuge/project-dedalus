@@ -15,7 +15,7 @@ const fetchActivitiesWithDetails = async (basicActivities: Object) => {
 
 export const getStrava = async (req: $Request, res: $Response) => {
   const listActivitiesPromise = util.promisify(strava.athlete.listActivities);
-  const basicActivitiesFromStrava = await listActivitiesPromise({});
+  const basicActivitiesFromStrava = await listActivitiesPromise({per_page: 50});
 
   const activitiesWithDetails = await fetchActivitiesWithDetails(basicActivitiesFromStrava);
   res.send(activitiesWithDetails);

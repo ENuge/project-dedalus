@@ -36,7 +36,7 @@ type Activity = {|
   description?: ?string, // listActivities does not return this, but getActivity(id) does.
 |};
 export type Activities = Array<Activity>;
-type State = {activities: Activities};
+type State = {|activities: Activities|};
 
 class Strava extends Component<{}, State> {
   constructor() {

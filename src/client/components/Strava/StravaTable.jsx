@@ -4,11 +4,11 @@ import dateFormat from 'dateformat';
 import type {Activities} from './Strava';
 
 const formatDatetime = (datetime: string): string => dateFormat(datetime, 'UTC:ddd mm/d HH:MM');
-type Props = {
+type Props = {|
   activities: Activities,
   onChange: Function,
   onSubmit: Function,
-};
+|};
 
 const StravaTable = (props: Props) => {
   const {activities, onChange, onSubmit} = props;
