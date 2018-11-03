@@ -93,10 +93,9 @@ const getInitialDate = (activities: Activities) => {
   return datesByRecency ? datesByRecency[0] : dateStringRelativeToToday(30);
 };
 
-type Props = {|activities: Activities|};
+type Props = {|activities: Activities, onChange: Function, onSubmit: Function|};
 type State = {|
   focusedDate: string,
-  focusedActivities: Activities,
   initialDate: string,
   endDate: string,
 |};
@@ -107,28 +106,22 @@ class StravaDailyActivity extends React.Component<Props, State> {
     const {activities} = this.props;
     // Implicit sorting by Unicode code points gets dates in ascending order.
     const initialDate = getInitialDate(activities);
-    // const endDate = datesByRecency ? datesByRecency[0] : dateStringRelativeToToday();
-    // NOTE: Think more about this - but I think I always want endDate for now
-    // to be today, not relative to the data we have.
     const endDate = dateStringRelativeToToday();
-    const focusedActivities = getActivitiesForDate(endDate, activities);
-    // debugger;
     this.state = {
       focusedDate: endDate,
-      focusedActivities,
       initialDate,
       endDate,
     };
   }
 
   handleChangedFocusDate = (focusedDate: string) => {
-    const {activities} = this.props;
-    const focusedActivities = getActivitiesForDate(focusedDate, activities);
-    this.setState({focusedDate, focusedActivities});
+    this.setState({focusedDate});
   };
 
   render() {
-    const {initialDate, endDate, focusedActivities, focusedDate} = this.state;
+    const {initialDate, endDate, focusedDate} = this.state;
+    const {activities, onChange, onSubmit} = this.props;
+    const focusedActivities = getActivitiesForDate(focusedDate, activities);
     // Each cell in our table corresponds to some day. Given it's a 7xX
     // table for some X number of weeks, construct all those dates
     const weeksWithDays = constructWeeklyDates(initialDate, endDate);
@@ -162,7 +155,7 @@ class StravaDailyActivity extends React.Component<Props, State> {
           </table>
           <div className="highlighted-activities">
             <h3>Activities on: {focusedDate}</h3>
-            <StravaTable activities={focusedActivities} onChange={() => {}} onSubmit={() => {}} />
+            <StravaTable activities={focusedActivities} onChange={onChange} onSubmit={onSubmit} />
           </div>
         </div>
       </React.Fragment>

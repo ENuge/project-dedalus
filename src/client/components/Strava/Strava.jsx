@@ -90,7 +90,11 @@ class Strava extends Component<{}, State> {
     }
     return (
       <React.Fragment>
-        <StravaDailyActivity activities={activities} />
+        <StravaDailyActivity
+          activities={activities}
+          onChange={this.handleDescriptionChange}
+          onSubmit={this.handleDescriptionSubmit}
+        />
         <StravaTable
           activities={activities}
           onChange={this.handleDescriptionChange}

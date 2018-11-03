@@ -53,6 +53,7 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
 
 .highlighted-date {
   display: flex;
+  justify-content: space-around;
 }
 
 .daily-calendar-table {

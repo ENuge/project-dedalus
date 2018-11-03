@@ -44,7 +44,7 @@ const StravaTable = (props: Props) => {
                     id={`${activity.id}-activity-description`}
                     type="text"
                     value={activity.description || ''}
-                    onChange={onChange.bind(null, activity)}
+                    onChange={event => onChange(activity, event)}
                   />
                 </label>
                 <input type="submit" value="Submit" />
