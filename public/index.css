@@ -54,6 +54,7 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
 .highlighted-date {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .daily-calendar-table {
@@ -61,7 +62,8 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
 }
 
 .highlighted-activities {
-  /* TODO */
+  background-color: #002b36;
+  color: #fdf6e3;
 }
 
 #footer {

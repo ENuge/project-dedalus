@@ -41,6 +41,38 @@ const dateStringRelativeToToday = (daysBack: number = 0): string => {
   return dateFromString(date.toISOString());
 };
 
+/**
+ * Scores a given day. Right now it simply sums the total number of heartbeats.
+ * @param {*} activities
+ */
+const scoreDayOfActivities = (activities: Activities) => {
+  return activities.reduce(
+    (score, activity) => score + activity.average_heartrate * activity.elapsed_time,
+    0
+  );
+};
+
+/**
+ * Ranks daily activities as a decimal relative to the "greatest" day (which is 1, 0 activity is 0).
+ * @param {*} days A day string, like '2018-10-24'
+ * @param {*} activities Activities
+ */
+const rankDailyActivities = (days: Array<string>, activities: Activities): {[string]: number} => {
+  const absoluteScoreDailyActivities = days.reduce((absoluteScoreDailyRankingAccum, day) => {
+    // eslint-disable-next-line no-param-reassign
+    absoluteScoreDailyRankingAccum[day] = scoreDayOfActivities(
+      getActivitiesForDate(day, activities)
+    );
+    return absoluteScoreDailyRankingAccum;
+  }, {});
+  const absoluteScores = ((Object.values(absoluteScoreDailyActivities): any): Array<number>);
+  const maxScore = Math.max(...absoluteScores);
+  return days.reduce((dailyRankingAccum, day) => {
+    dailyRankingAccum[day] = absoluteScoreDailyActivities[day] / maxScore; // eslint-disable-line no-param-reassign
+    return dailyRankingAccum;
+  }, {});
+};
+
 const constructWeeklyDates = (initialDate: string, endDate: string): Array<Array<string>> => {
   // Given an initialDate and an endDate, construct and return an array
   // of arrays, where the zeroth inner array is Monday and the sixth inner
@@ -125,6 +157,8 @@ class StravaDailyActivity extends React.Component<Props, State> {
     // Each cell in our table corresponds to some day. Given it's a 7xX
     // table for some X number of weeks, construct all those dates
     const weeksWithDays = constructWeeklyDates(initialDate, endDate);
+    const days = weeksWithDays.reduce((accum, week) => [...accum, ...week], []);
+    const dayRankings = rankDailyActivities(days, activities);
     // use that to display activities to the right for that date.
     // (Can just be as like a table or something to start.)
     return (
@@ -144,6 +178,8 @@ class StravaDailyActivity extends React.Component<Props, State> {
                         onKeyPress={event =>
                           event.keyCode === 13 ? this.handleChangedFocusDate(day) : null
                         }
+                        // (34, 139, 34) is forest green. I should probably pretty this up though
+                        style={{backgroundColor: `rgb(34, 139, 34, ${dayRankings[day]})`}}
                       >
                         {day}
                       </div>
