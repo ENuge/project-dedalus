@@ -47,6 +47,22 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   background-color: var(--bg-light);
 }
 
+.daily-activity-cell {
+  background-color: lightgray; /* Color for now... */
+}
+
+.highlighted-date {
+  display: flex;
+}
+
+.daily-calendar-table {
+  /* TODO */
+}
+
+.highlighted-activities {
+  /* TODO */
+}
+
 #footer {
   background-color: var(--bg-dark);
   height: 50px;
