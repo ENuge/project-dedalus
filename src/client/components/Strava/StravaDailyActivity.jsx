@@ -4,7 +4,7 @@ import type {Activities} from './Strava';
 import StravaTable from './StravaTable';
 
 const dateExtractorRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}/;
-const millisecondsInDay = 1000 * 60 * 60 * 24; // he did the monster math
+const millisecondsInDay = 1000 * 60 * 60 * 24;
 
 const isSameDate = (date1: string, date2: string) => {
   // Assumes both at least start with the string "YYYY-MM-DD"
@@ -25,20 +25,27 @@ const getActivitiesForDate = (date: string, activities: Activities): Activities 
  * Returns a string formatted like YYYY-MM-DD with no time info.
  * @param {*} dateString A string formatted like 2018-11-03T00:24:18Z
  */
-const dateFromString = (dateString: string): string => {
+const extractDateFromString = (dateString: string): string => {
   const [date] = dateString.match(dateExtractorRegex) || [''];
   return date;
 };
 
+const constructDateString = (date: Date): string => {
+  const year = `${date.getFullYear()}`;
+  const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`;
+  const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
+  return `${year}-${month}-${day}`;
+};
+
 // Returns an array of dates, without duplicates, that have at least one activity.
 const getUniqueActivityDates = (activities: Activities): Array<string> => {
-  const activityDates = activities.map(activity => dateFromString(activity.start_date));
+  const activityDates = activities.map(activity => extractDateFromString(activity.start_date));
   return Array.from(new Set([...activityDates]));
 };
 
 const dateStringRelativeToToday = (daysBack: number = 0): string => {
   const date = new Date(new Date() - millisecondsInDay * daysBack);
-  return dateFromString(date.toISOString());
+  return constructDateString(date);
 };
 
 /**
@@ -95,7 +102,7 @@ const constructWeeklyDates = (initialDate: string, endDate: string): Array<Array
   let currDate = new Date(endDate);
   while (datesRemaining) {
     const dayOfWeek = currDate.getDay();
-    const dateString = dateFromString(currDate.toISOString());
+    const dateString = constructDateString(currDate);
     weeksWithDays[dayOfWeek].unshift(dateString);
 
     const mondayLength = weeksWithDays[0].length - correction(0);
