@@ -132,6 +132,52 @@ const getInitialDate = (activities: Activities) => {
   return datesByRecency ? datesByRecency[0] : dateStringRelativeToToday(30);
 };
 
+type MonthHeadersProps = {|days: Array<string>|};
+const MonthHeaders = (props: MonthHeadersProps) => {
+  const {days} = props;
+  const monthNumToMonth = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  return (
+    <tr>
+      {days.map(day => {
+        // date is like '2018-11-04', which the date constructor treats
+        // as the UTC time (and thus local time may be the day before)
+        // so we always use UTC.
+        const date = new Date(day);
+        // "If it's a first Monday of the month"
+        if (date.getUTCDay() === 0 && date.getUTCDate() <= 7) {
+          return (
+            <td>
+              <div className="date-legend-month">{monthNumToMonth[date.getUTCMonth()]}</div>
+            </td>
+          );
+        }
+        // Return an empty cell to take up one column's worth of space
+        if (date.getUTCDay() === 0) {
+          return (
+            <td>
+              <div className="date-legend-month" />
+            </td>
+          );
+        }
+        return null;
+      })}
+    </tr>
+  );
+};
+
 type Props = {|activities: Activities, onChange: Function, onSubmit: Function|};
 type State = {|
   focusedDate: string,
@@ -179,6 +225,7 @@ class StravaDailyActivity extends React.Component<Props, State> {
             </div>
             <table className="daily-calendar-table">
               <tbody>
+                <MonthHeaders days={days} />
                 {weeksWithDays.map(week => (
                   <tr>
                     {week.map(day => (

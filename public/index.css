@@ -9,6 +9,9 @@ dice around the solarizeds until I was satisfied. */
 
   /* Layout-related constants */
   --header-height: 100px;
+
+  /* Other reused constants */
+  --daily-activity-cell-size: 20px;
 }
 
 /* Base CSS Resets */
@@ -50,8 +53,8 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
 .daily-activity-cell {
   background-color: lightgray;
   position: relative; /* So the tooltip can be positioned relative to it */
-  width: 20px;
-  height: 20px;
+  width: var(--daily-activity-cell-size);
+  height: var(--daily-activity-cell-size);
 }
 
 .daily-activity-tooltip {
@@ -88,6 +91,12 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   position: relative;
   height: 100%;
   width: 36px;
+}
+
+.date-legend-month {
+  overflow: visible;
+  width: var(--daily-activity-cell-size);
+  display: inline-block;
 }
 
 .date-legend-monday {
