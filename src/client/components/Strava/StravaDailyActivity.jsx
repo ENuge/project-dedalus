@@ -52,12 +52,13 @@ const dateStringRelativeToToday = (daysBack: number = 0): string => {
  * Scores a given day. Right now it simply sums the total number of heartbeats.
  * @param {*} activities
  */
-const scoreDayOfActivities = (activities: Activities) => {
-  return activities.reduce(
-    (score, activity) => score + activity.average_heartrate * activity.elapsed_time,
-    0
-  );
-};
+const scoreDayOfActivities = (activities: Activities) =>
+  activities.reduce((score, activity) => {
+    if (activity.average_heartrate && activity.elapsed_time) {
+      return score + activity.average_heartrate * activity.elapsed_time;
+    }
+    return 0;
+  }, 0);
 
 /**
  * Ranks daily activities as a decimal relative to the "greatest" day (which is 1, 0 activity is 0).
@@ -213,7 +214,6 @@ class StravaDailyActivity extends React.Component<Props, State> {
     const days = weeksWithDays.reduce((accum, week) => [...accum, ...week], []);
     const dayRankings = rankDailyActivities(days, activities);
     // use that to display activities to the right for that date.
-    // (Can just be as like a table or something to start.)
     return (
       <React.Fragment>
         <div className="highlighted-date">
@@ -230,21 +230,23 @@ class StravaDailyActivity extends React.Component<Props, State> {
                   <tr>
                     {week.map(day => (
                       <td>
-                        <div
-                          className="daily-activity-cell"
-                          onClick={() => this.handleChangedFocusDate(day)}
-                          role="link"
-                          tabIndex="0"
-                          onKeyPress={event =>
-                            event.keyCode === 13 ? this.handleChangedFocusDate(day) : null
-                          }
-                          // (34, 139, 34) is forest green. I should probably pretty this up though
-                          style={{backgroundColor: `rgb(34, 139, 34, ${dayRankings[day]})`}}
-                        >
-                          <div className="daily-activity-tooltip">
-                            {/* TODO: Make this pretty. */}
-                            {day.slice(5)}: {getActivitiesForDate(day, activities).length}{' '}
-                            activities
+                        <div className="daily-activity-cell-area">
+                          <div
+                            className="daily-activity-cell"
+                            onClick={() => this.handleChangedFocusDate(day)}
+                            role="link"
+                            tabIndex="0"
+                            onKeyPress={event =>
+                              event.keyCode === 13 ? this.handleChangedFocusDate(day) : null
+                            }
+                            // (34, 139, 34) is forest green. I should probably pretty this up though
+                            style={{backgroundColor: `rgb(34, 139, 34, ${dayRankings[day]})`}}
+                          >
+                            <div className="daily-activity-tooltip">
+                              {/* TODO: Make this pretty. */}
+                              {day.slice(5)}: {getActivitiesForDate(day, activities).length}{' '}
+                              activities
+                            </div>
                           </div>
                         </div>
                       </td>

@@ -50,8 +50,11 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   background-color: var(--bg-light);
 }
 
-.daily-activity-cell {
+.daily-activity-cell-area {
   background-color: lightgray;
+}
+
+.daily-activity-cell {
   position: relative; /* So the tooltip can be positioned relative to it */
   width: var(--daily-activity-cell-size);
   height: var(--daily-activity-cell-size);
