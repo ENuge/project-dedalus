@@ -171,31 +171,42 @@ class StravaDailyActivity extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <div className="highlighted-date">
-          <table className="daily-calendar-table">
-            <tbody>
-              {weeksWithDays.map(week => (
-                <tr>
-                  {week.map(day => (
-                    <td>
-                      <div
-                        className="daily-activity-cell"
-                        onClick={() => this.handleChangedFocusDate(day)}
-                        role="link"
-                        tabIndex="0"
-                        onKeyPress={event =>
-                          event.keyCode === 13 ? this.handleChangedFocusDate(day) : null
-                        }
-                        // (34, 139, 34) is forest green. I should probably pretty this up though
-                        style={{backgroundColor: `rgb(34, 139, 34, ${dayRankings[day]})`}}
-                      >
-                        {day}
-                      </div>
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="highlighted-date-selector">
+            <div className="highlighted-date-legend">
+              <div className="date-legend-monday">Mon</div>
+              <div className="date-legend-wednesday">Wed</div>
+              <div className="date-legend-friday">Fri</div>
+            </div>
+            <table className="daily-calendar-table">
+              <tbody>
+                {weeksWithDays.map(week => (
+                  <tr>
+                    {week.map(day => (
+                      <td>
+                        <div
+                          className="daily-activity-cell"
+                          onClick={() => this.handleChangedFocusDate(day)}
+                          role="link"
+                          tabIndex="0"
+                          onKeyPress={event =>
+                            event.keyCode === 13 ? this.handleChangedFocusDate(day) : null
+                          }
+                          // (34, 139, 34) is forest green. I should probably pretty this up though
+                          style={{backgroundColor: `rgb(34, 139, 34, ${dayRankings[day]})`}}
+                        >
+                          <div className="daily-activity-tooltip">
+                            {/* TODO: Make this pretty. */}
+                            {day.slice(5)}: {getActivitiesForDate(day, activities).length}{' '}
+                            activities
+                          </div>
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <div className="highlighted-activities">
             <h3>Activities on: {focusedDate}</h3>
             <StravaTable activities={focusedActivities} onChange={onChange} onSubmit={onSubmit} />

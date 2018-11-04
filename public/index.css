@@ -48,13 +48,63 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
 }
 
 .daily-activity-cell {
-  background-color: lightgray; /* Color for now... */
+  background-color: lightgray;
+  position: relative; /* So the tooltip can be positioned relative to it */
+  width: 20px;
+  height: 20px;
+}
+
+.daily-activity-tooltip {
+  /* Modified by a :hover */
+  display: none;
+
+  position: absolute;
+  background-color: #002b36;
+  color: #fdf6e3;
+  top: -115%;
+  /* Centers the element relative to parent. */
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  width: 120px;
+  text-align: center;
+}
+
+.daily-activity-cell:hover .daily-activity-tooltip {
+  display: block;
 }
 
 .highlighted-date {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.highlighted-date-selector {
+  display: flex;
+}
+
+.highlighted-date-legend {
+  position: relative;
+  height: 100%;
+  width: 36px;
+}
+
+.date-legend-monday {
+  position: absolute;
+  top: 15%;
+}
+
+.date-legend-wednesday {
+  position: absolute;
+  /* Text should be exactly at the midway point. */
+  top: 44%;
+}
+
+.date-legend-friday {
+  position: absolute;
+  /* Manually positioned (not super-exact) to align with day blocks next to it */
+  top: 73%;
 }
 
 .daily-calendar-table {
@@ -74,5 +124,6 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
 .footer-text {
   color: var(--bg-light);
   text-align: center;
-  line-height: 50px; /* Same line-centering trick as used in the header, matches the footer's size. */
+  line-height: 50px; /* Same line-centering trick as used in the header, matches the footer'
+    s size. * /;
 }
