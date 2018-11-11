@@ -34,10 +34,10 @@ class QuoteOfTheDay extends Component<{}, State> {
     }
 
     return (
-      <React.Fragment>
+      <div className="QuoteOfTheDay">
         <em>{quote}</em>
         <p>- {author}</p>
-      </React.Fragment>
+      </div>
     );
   }
 }
