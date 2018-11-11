@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import axios from 'axios';
 import type {Activities} from './Strava';
 import StravaTable from './StravaTable';
 
@@ -17,9 +18,25 @@ const isSameDate = (date1: string, date2: string) => {
   return extractedDate1 === extractedDate2;
 };
 
-const getActivitiesForDate = (date: string, activities: Activities): Activities =>
+/**
+ * Gets the full, detailed, activities for the given date.
+ * @param {} date
+ * @param {*} activities
+ */
+const getDetailedActivitiesForDate = (
+  date: string,
+  activities: Activities
+): Promise<Activities> => {
   // Assumes `date` is in the same format as Strava's.
-  activities.filter(activity => isSameDate(activity.start_date, date));
+  const activitiesOnDate = activities.filter(activity => isSameDate(activity.start_date, date));
+  const activityIDs = activitiesOnDate.map(activity => activity.id);
+  return axios
+    .get('/ajax/strava_details', {params: {ids: activityIDs}})
+    .then(response => response.data);
+};
+
+const getBasicActivitiesForDate = (date: string, activities: Activities) =>
+  activities.filter(activity => isSameDate(date, activity.start_date));
 
 /**
  * Returns a string formatted like YYYY-MM-DD with no time info.
@@ -69,7 +86,7 @@ const rankDailyActivities = (days: Array<string>, activities: Activities): {[str
   const absoluteScoreDailyActivities = days.reduce((absoluteScoreDailyRankingAccum, day) => {
     // eslint-disable-next-line no-param-reassign
     absoluteScoreDailyRankingAccum[day] = scoreDayOfActivities(
-      getActivitiesForDate(day, activities)
+      getBasicActivitiesForDate(day, activities)
     );
     return absoluteScoreDailyRankingAccum;
   }, {});
@@ -184,6 +201,7 @@ type State = {|
   focusedDate: string,
   initialDate: string,
   endDate: string,
+  detailedActivitiesForFocusedDate: Activities,
 |};
 
 class StravaDailyActivity extends React.Component<Props, State> {
@@ -197,17 +215,25 @@ class StravaDailyActivity extends React.Component<Props, State> {
       focusedDate: endDate,
       initialDate,
       endDate,
+      detailedActivitiesForFocusedDate: [],
     };
+    // TODO: Fix this - this is a super hacky way of getting around
+    // the fact that neither the constructor nor the render
+    // can be async functions.
+    this.handleChangedFocusDate(endDate, activities);
   }
 
-  handleChangedFocusDate = (focusedDate: string) => {
-    this.setState({focusedDate});
-  };
+  handleChangedFocusDate(focusedDate: string, activities: Activities) {
+    getDetailedActivitiesForDate(focusedDate, activities).then(detailedActivitiesForFocusedDate =>
+      this.setState({focusedDate, detailedActivitiesForFocusedDate})
+    );
+  }
 
   render() {
-    const {initialDate, endDate, focusedDate} = this.state;
+    const {initialDate, endDate, focusedDate, detailedActivitiesForFocusedDate} = this.state;
     const {activities, onChange, onSubmit} = this.props;
-    const focusedActivities = getActivitiesForDate(focusedDate, activities);
+    // TODO: This needs to happen in a separate lifecycle method that
+    // updates state, and not directly here, unfortunately.
     // Each cell in our table corresponds to some day. Given it's a 7xX
     // table for some X number of weeks, construct all those dates
     const weeksWithDays = constructWeeklyDates(initialDate, endDate);
@@ -233,18 +259,20 @@ class StravaDailyActivity extends React.Component<Props, State> {
                         <div className="daily-activity-cell-area">
                           <div
                             className="daily-activity-cell"
-                            onClick={() => this.handleChangedFocusDate(day)}
+                            onClick={() => this.handleChangedFocusDate(day, activities)}
                             role="link"
                             tabIndex="0"
                             onKeyPress={event =>
-                              event.keyCode === 13 ? this.handleChangedFocusDate(day) : null
+                              event.keyCode === 13
+                                ? this.handleChangedFocusDate(day, activities)
+                                : null
                             }
                             // (34, 139, 34) is forest green. I should probably pretty this up though
                             style={{backgroundColor: `rgb(34, 139, 34, ${dayRankings[day]})`}}
                           >
                             <div className="daily-activity-tooltip">
                               {/* TODO: Make this pretty. */}
-                              {day.slice(5)}: {getActivitiesForDate(day, activities).length}{' '}
+                              {day.slice(5)}: {getBasicActivitiesForDate(day, activities).length}{' '}
                               activities
                             </div>
                           </div>
@@ -258,7 +286,15 @@ class StravaDailyActivity extends React.Component<Props, State> {
           </div>
           <div className="highlighted-activities">
             <h3>Activities on: {focusedDate}</h3>
-            <StravaTable activities={focusedActivities} onChange={onChange} onSubmit={onSubmit} />
+            <StravaTable
+              activities={
+                detailedActivitiesForFocusedDate.length > 0
+                  ? detailedActivitiesForFocusedDate
+                  : getBasicActivitiesForDate(focusedDate, activities)
+              }
+              onChange={onChange}
+              onSubmit={onSubmit}
+            />
           </div>
         </div>
       </React.Fragment>

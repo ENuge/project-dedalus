@@ -9,7 +9,7 @@ import type {$Request, $Response} from 'express';
 import ReactBase from '../client/ReactBase';
 import htmlTemplate from '../client/template';
 import handleQotd from './qotd';
-import {getStrava, postStrava} from './strava';
+import {getStrava, hydrateStrava, postStrava} from './strava';
 // import {getAnki, postAnki} from './anki';
 
 const app = express();
@@ -30,6 +30,7 @@ app.get('/ajax/foo', (req: $Request, res: $Response) => res.send('hi'));
 app.get('/ajax/qotd', handleQotd);
 
 app.get('/ajax/strava', getStrava);
+app.get('/ajax/strava_details', hydrateStrava);
 app.post('/ajax/strava', postStrava);
 
 // TODO: Eventually I will get to implementing these.

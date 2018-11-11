@@ -21,6 +21,22 @@ export const getStrava = async (req: $Request, res: $Response) => {
   // const activitiesWithDetails = await fetchActivitiesWithDetails(basicActivitiesFromStrava);
   res.send(basicActivitiesFromStrava);
 };
+
+// Hydrates a list of Strava activity IDs, returning their full details
+// (including, most importantly, the description field not sent down)
+// by a bulk strava GET request.
+export const hydrateStrava = async (req: $Request, res: $Response) => {
+  const {ids} = req.query;
+  if (!ids || ids.length === 0) {
+    console.warn('No IDs sent in request.');
+    res.send([]);
+  }
+
+  const getActivityPromise = util.promisify(strava.activities.get);
+  const activitiesWithDetails = await Promise.all(ids.map(id => getActivityPromise({id})));
+  res.send(activitiesWithDetails);
+};
+
 export const postStrava = async (req: $Request, res: $Response) => {
   const postedActivity = req.body;
 
