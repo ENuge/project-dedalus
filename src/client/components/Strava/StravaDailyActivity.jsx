@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import axios from 'axios';
-import type {Activities, Activity} from './Strava';
+import type {Activities} from './Strava';
 import DailyActivityTable from './DailyActivityTable';
 
 const dateExtractorRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}/;
@@ -47,7 +47,20 @@ const extractDateFromString = (dateString: string): string => {
   return date;
 };
 
-const constructDateString = (date: Date): string => {
+const constructDateFromString = (dateString: string) => {
+  const [year, month, day] = dateString.split('-') || ['', '', ''];
+  // month is 0-indexed for some reason...
+  return new Date(parseInt(year, 10), parseInt(month, 10) - 1, parseInt(day, 10));
+};
+
+/**
+ * Returns a date for the given string. This gives the appropriate date where
+ * `new Date('YYYY-MM-DD')` returns DD-1 because it treats the string date as UTC
+ * midnight but then returns it in local time, minus 8 hours for PST.
+ * @param date A date of the form '2018-11-11' . This does not expect, and may fail,
+ * if any additional time info is included in the string.
+ */
+const constructStringFromDate = (date: Date): string => {
   const year = `${date.getFullYear()}`;
   const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`;
   const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
@@ -62,7 +75,7 @@ const getUniqueActivityDates = (activities: Activities): Array<string> => {
 
 const dateStringRelativeToToday = (daysBack: number = 0): string => {
   const date = new Date(new Date() - millisecondsInDay * daysBack);
-  return constructDateString(date);
+  return constructStringFromDate(date);
 };
 
 /**
@@ -98,14 +111,12 @@ const rankDailyActivities = (days: Array<string>, activities: Activities): {[str
   }, {});
 };
 
+/**
+ *  Given an initialDate and an endDate, construct and return an array
+ *  of arrays, where the zeroth inner array is Monday and the sixth inner
+ *  array is Sunday, matching each date in order to its weekday.
+ */
 const constructWeeklyDates = (initialDate: string, endDate: string): Array<Array<string>> => {
-  // Given an initialDate and an endDate, construct and return an array
-  // of arrays, where the zeroth inner array is Monday and the sixth inner
-  // array is Sunday. (This should really be a class with a better
-  // interface than that, but yolo.)
-  // If initialDate and endDate are not exactly 7*n days apart, the
-  // arrays will include enough dates prior to initialDate to make
-  // each week have the same number of days.
   const weeksWithDays = [[], [], [], [], [], [], []];
   // We want the most recent date to appear in a final, not-fully-populated
   // column, unless the most recent date is a Sunday. (So the dates look
@@ -113,14 +124,13 @@ const constructWeeklyDates = (initialDate: string, endDate: string): Array<Array
   // before the Wednesday in the given week.)
   // We do this by comparing each day against a correction, which allows some days
   // of the week to have an extra date.
-  const endDay = new Date(endDate).getDay();
-  const correction = (dayOfWeek: number) => (endDay >= dayOfWeek ? 1 : 0);
+  let currDate = constructDateFromString(endDate);
+  const correction = (dayOfWeek: number) => (currDate.getDay() >= dayOfWeek ? 1 : 0);
 
   let datesRemaining = true;
-  let currDate = new Date(endDate);
   while (datesRemaining) {
     const dayOfWeek = currDate.getDay();
-    const dateString = constructDateString(currDate);
+    const dateString = constructStringFromDate(currDate);
     weeksWithDays[dayOfWeek].unshift(dateString);
 
     const mondayLength = weeksWithDays[0].length - correction(0);
@@ -177,7 +187,7 @@ const MonthHeaders = (props: MonthHeadersProps) => {
         // "If it's a first Monday of the month"
         if (date.getUTCDay() === 0 && date.getUTCDate() <= 7) {
           return (
-            <td>
+            <td key={day}>
               <div className="date-legend-month">{monthNumToMonth[date.getUTCMonth()]}</div>
             </td>
           );
@@ -185,7 +195,7 @@ const MonthHeaders = (props: MonthHeadersProps) => {
         // Return an empty cell to take up one column's worth of space
         if (date.getUTCDay() === 0) {
           return (
-            <td>
+            <td key={day}>
               <div className="date-legend-month" />
             </td>
           );
@@ -279,9 +289,9 @@ class StravaDailyActivity extends React.Component<Props, State> {
               <tbody>
                 <MonthHeaders days={days} />
                 {weeksWithDays.map(week => (
-                  <tr>
+                  <tr key={week}>
                     {week.map(day => (
-                      <td>
+                      <td key={day}>
                         <div className="daily-activity-cell-area">
                           <div
                             className="daily-activity-cell"

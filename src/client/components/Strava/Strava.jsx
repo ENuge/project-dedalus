@@ -42,9 +42,6 @@ class Strava extends Component<{}, State> {
   constructor() {
     super();
     this.state = {activities: []};
-
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.handleDescriptionSubmit = this.handleDescriptionSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -57,32 +54,6 @@ class Strava extends Component<{}, State> {
       .catch();
   }
 
-  handleDescriptionChange = (
-    currentActivity: Activity,
-    event: SyntheticInputEvent<HTMLInputElement>
-  ) => {
-    // Note that only a submit POSTs the data back to Strava - make that clear in the UX.
-    // (Right now it's not at all obvious!)
-    event.preventDefault(); // Just to be safe
-    const {activities} = this.state;
-    const newActivities = activities.reduce((accum, activity) => {
-      if (activity.id === currentActivity.id) {
-        return [...accum, {...activity, description: event.target.value}];
-      }
-      return [...accum, activity];
-    }, []);
-    this.setState({activities: newActivities});
-  };
-
-  handleDescriptionSubmit = (currentActivity: Activity, event: SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const {activities} = this.state;
-    const updatedActivity = activities.find(
-      activity => activity && activity.id === currentActivity.id
-    );
-    axios.post('/ajax/strava', updatedActivity);
-  };
-
   render() {
     const {activities} = this.state;
     if (activities.length === 0) {
@@ -90,11 +61,7 @@ class Strava extends Component<{}, State> {
     }
     return (
       <React.Fragment>
-        <StravaDailyActivity
-          activities={activities}
-          onChange={this.handleDescriptionChange}
-          onSubmit={this.handleDescriptionSubmit}
-        />
+        <StravaDailyActivity activities={activities} />
         <AllActivitiesTable
           activities={activities}
           // onChange={} TODO: Make these able to edit the name of the activity.
