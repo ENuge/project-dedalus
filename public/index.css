@@ -149,5 +149,5 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   text-align: center;
   line-height: 50px; /* Same line-centering trick as used in the header,
   matches the footer'
-    s size. * /;
+    s size. */
 }

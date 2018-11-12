@@ -10,7 +10,7 @@ type Props = {|
   onSubmit: Function,
 |};
 
-const StravaTable = (props: Props) => {
+const DailyActivityTable = (props: Props) => {
   const {activities, onChange, onSubmit} = props;
   return (
     <table>
@@ -57,4 +57,4 @@ const StravaTable = (props: Props) => {
   );
 };
 
-export default StravaTable;
+export default DailyActivityTable;

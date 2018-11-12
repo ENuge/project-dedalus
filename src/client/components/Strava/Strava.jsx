@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import axios from 'axios';
-import StravaTable from './StravaTable';
+import AllActivitiesTable from './AllActivitiesTable';
 import StravaDailyActivity from './StravaDailyActivity';
 
 // There are a couple of additional fields that I'm not bothering typing because
@@ -95,10 +95,10 @@ class Strava extends Component<{}, State> {
           onChange={this.handleDescriptionChange}
           onSubmit={this.handleDescriptionSubmit}
         />
-        <StravaTable
+        <AllActivitiesTable
           activities={activities}
-          onChange={this.handleDescriptionChange}
-          onSubmit={this.handleDescriptionSubmit}
+          // onChange={} TODO: Make these able to edit the name of the activity.
+          // onSubmit={}
         />
       </React.Fragment>
     );

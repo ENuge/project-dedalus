@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import axios from 'axios';
-import type {Activities} from './Strava';
-import StravaTable from './StravaTable';
+import type {Activities, Activity} from './Strava';
+import DailyActivityTable from './DailyActivityTable';
 
 const dateExtractorRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}/;
 const millisecondsInDay = 1000 * 60 * 60 * 24;
@@ -196,7 +196,7 @@ const MonthHeaders = (props: MonthHeadersProps) => {
   );
 };
 
-type Props = {|activities: Activities, onChange: Function, onSubmit: Function|};
+type Props = {|activities: Activities|};
 type State = {|
   focusedDate: string,
   initialDate: string,
@@ -223,6 +223,32 @@ class StravaDailyActivity extends React.Component<Props, State> {
     this.handleChangedFocusDate(endDate, activities);
   }
 
+  handleDescriptionChange = (
+    currentActivity: Activity,
+    event: SyntheticInputEvent<HTMLInputElement>
+  ) => {
+    // Note that only a submit POSTs the data back to Strava - make that clear in the UX.
+    // (Right now it's not at all obvious!)
+    event.preventDefault(); // Just to be safe
+    const {detailedActivitiesForFocusedDate} = this.state;
+    const newActivities = detailedActivitiesForFocusedDate.reduce((accum, activity) => {
+      if (activity.id === currentActivity.id) {
+        return [...accum, {...activity, description: event.target.value}];
+      }
+      return [...accum, activity];
+    }, []);
+    this.setState({detailedActivitiesForFocusedDate: newActivities});
+  };
+
+  handleDescriptionSubmit = (currentActivity: Activity, event: SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const {detailedActivitiesForFocusedDate} = this.state;
+    const updatedActivity = detailedActivitiesForFocusedDate.find(
+      activity => activity && activity.id === currentActivity.id
+    );
+    axios.post('/ajax/strava', updatedActivity);
+  };
+
   handleChangedFocusDate(focusedDate: string, activities: Activities) {
     getDetailedActivitiesForDate(focusedDate, activities).then(detailedActivitiesForFocusedDate =>
       this.setState({focusedDate, detailedActivitiesForFocusedDate})
@@ -231,7 +257,7 @@ class StravaDailyActivity extends React.Component<Props, State> {
 
   render() {
     const {initialDate, endDate, focusedDate, detailedActivitiesForFocusedDate} = this.state;
-    const {activities, onChange, onSubmit} = this.props;
+    const {activities} = this.props;
     // TODO: This needs to happen in a separate lifecycle method that
     // updates state, and not directly here, unfortunately.
     // Each cell in our table corresponds to some day. Given it's a 7xX
@@ -286,14 +312,14 @@ class StravaDailyActivity extends React.Component<Props, State> {
           </div>
           <div className="highlighted-activities">
             <h3>Activities on: {focusedDate}</h3>
-            <StravaTable
+            <DailyActivityTable
               activities={
                 detailedActivitiesForFocusedDate.length > 0
                   ? detailedActivitiesForFocusedDate
                   : getBasicActivitiesForDate(focusedDate, activities)
               }
-              onChange={onChange}
-              onSubmit={onSubmit}
+              onChange={this.handleDescriptionChange}
+              onSubmit={this.handleDescriptionSubmit}
             />
           </div>
         </div>
