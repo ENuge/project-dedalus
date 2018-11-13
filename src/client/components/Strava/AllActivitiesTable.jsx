@@ -21,7 +21,6 @@ const AllActivitiesTable = (props: Props) => {
           <th>Duration (mins)</th>
           <th>Avg Heartrate</th>
           <th>Max Heartrate</th>
-          <th>Total elapsed workout time (today)</th>
         </tr>
       </thead>
       <tbody>
@@ -34,7 +33,6 @@ const AllActivitiesTable = (props: Props) => {
             <td>{Math.round(activity.elapsed_time / 60)}</td>
             <td>{activity.average_heartrate}</td>
             <td>{activity.max_heartrate}</td>
-            <td>{activity.description}</td>
           </tr>
         ))}
       </tbody>

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import axios from 'axios';
-import type {Activities} from './Strava';
+import type {Activities, Activity} from './Strava';
 import DailyActivityTable from './DailyActivityTable';
 
 const dateExtractorRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}/;
@@ -125,7 +125,10 @@ const constructWeeklyDates = (initialDate: string, endDate: string): Array<Array
   // We do this by comparing each day against a correction, which allows some days
   // of the week to have an extra date.
   let currDate = constructDateFromString(endDate);
-  const correction = (dayOfWeek: number) => (currDate.getDay() >= dayOfWeek ? 1 : 0);
+  // This const looks silly but is important - otherwise we're closing on currDate,
+  // which changes each iteration.
+  const currDateDay = currDate.getDay();
+  const correction = (dayOfWeek: number) => (currDateDay >= dayOfWeek ? 1 : 0);
 
   let datesRemaining = true;
   while (datesRemaining) {
@@ -268,13 +271,12 @@ class StravaDailyActivity extends React.Component<Props, State> {
   render() {
     const {initialDate, endDate, focusedDate, detailedActivitiesForFocusedDate} = this.state;
     const {activities} = this.props;
-    // TODO: This needs to happen in a separate lifecycle method that
-    // updates state, and not directly here, unfortunately.
     // Each cell in our table corresponds to some day. Given it's a 7xX
     // table for some X number of weeks, construct all those dates
     const weeksWithDays = constructWeeklyDates(initialDate, endDate);
     const days = weeksWithDays.reduce((accum, week) => [...accum, ...week], []);
     const dayRankings = rankDailyActivities(days, activities);
+
     // use that to display activities to the right for that date.
     return (
       <React.Fragment>
@@ -289,7 +291,7 @@ class StravaDailyActivity extends React.Component<Props, State> {
               <tbody>
                 <MonthHeaders days={days} />
                 {weeksWithDays.map(week => (
-                  <tr key={week}>
+                  <tr key={JSON.stringify(week)}>
                     {week.map(day => (
                       <td key={day}>
                         <div className="daily-activity-cell-area">

@@ -6,7 +6,7 @@ import StravaDailyActivity from './StravaDailyActivity';
 
 // There are a couple of additional fields that I'm not bothering typing because
 // I don't think they'll ever be useful (`resource_state`, for instance).
-type Activity = {|
+export type Activity = {|
   name: string,
   athlete: {
     id: number,
