@@ -236,32 +236,6 @@ class StravaDailyActivity extends React.Component<Props, State> {
     this.handleChangedFocusDate(endDate, activities);
   }
 
-  handleDescriptionChange = (
-    currentActivity: Activity,
-    event: SyntheticInputEvent<HTMLInputElement>
-  ) => {
-    // Note that only a submit POSTs the data back to Strava - make that clear in the UX.
-    // (Right now it's not at all obvious!)
-    event.preventDefault(); // Just to be safe
-    const {detailedActivitiesForFocusedDate} = this.state;
-    const newActivities = detailedActivitiesForFocusedDate.reduce((accum, activity) => {
-      if (activity.id === currentActivity.id) {
-        return [...accum, {...activity, description: event.target.value}];
-      }
-      return [...accum, activity];
-    }, []);
-    this.setState({detailedActivitiesForFocusedDate: newActivities});
-  };
-
-  handleDescriptionSubmit = (currentActivity: Activity, event: SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const {detailedActivitiesForFocusedDate} = this.state;
-    const updatedActivity = detailedActivitiesForFocusedDate.find(
-      activity => activity && activity.id === currentActivity.id
-    );
-    axios.post('/ajax/strava', updatedActivity);
-  };
-
   handleChangedFocusDate(focusedDate: string, activities: Activities) {
     getDetailedActivitiesForDate(focusedDate, activities).then(detailedActivitiesForFocusedDate =>
       this.setState({focusedDate, detailedActivitiesForFocusedDate})
@@ -322,18 +296,14 @@ class StravaDailyActivity extends React.Component<Props, State> {
               </tbody>
             </table>
           </div>
-          <div className="highlighted-activities">
-            <h3>Activities on: {focusedDate}</h3>
-            <DailyActivityTable
-              activities={
-                detailedActivitiesForFocusedDate.length > 0
-                  ? detailedActivitiesForFocusedDate
-                  : getBasicActivitiesForDate(focusedDate, activities)
-              }
-              onChange={this.handleDescriptionChange}
-              onSubmit={this.handleDescriptionSubmit}
-            />
-          </div>
+          <DailyActivityTable
+            activities={
+              detailedActivitiesForFocusedDate.length > 0
+                ? detailedActivitiesForFocusedDate
+                : getBasicActivitiesForDate(focusedDate, activities)
+            }
+            dateString={focusedDate}
+          />
         </div>
       </React.Fragment>
     );

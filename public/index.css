@@ -151,3 +151,8 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   matches the footer'
     s size. */
 }
+
+.DailyActivityTable-input {
+  width: 400px;
+  height: 150px;
+}

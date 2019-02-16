@@ -28,6 +28,7 @@ This provides a good check that I'm doing what I set out to do. It also provides
 ## Running Locally
 
 1. `npm install && npm run dev`. This should start a daemon that will update as you save files (server-built or frontend code).
+2. You can view changes at `localhost:8080` (or whatever you have `$PORT` set to).
 
 ### Debugging Locally
 
