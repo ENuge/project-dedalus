@@ -84,9 +84,9 @@ class DailyActivityTable extends React.Component<Props, State> {
           <form onSubmit={this.handleDescriptionSubmit}>
             <label htmlFor={`${editingActivity.id}-activity-description`}>
               Edit:{' '}
-              <input
+              <textarea
                 id={`${editingActivity.id}-activity-description`}
-                className="DailyActivityTable-input"
+                className="DailyActivityTable-textarea"
                 type="text"
                 value={editingActivity.description || ''}
                 onChange={this.handleDescriptionChange}
@@ -116,7 +116,9 @@ class DailyActivityTable extends React.Component<Props, State> {
             {activities.map(activity => (
               <tr key={activity.id}>
                 <td>
-                  <a href={`https://strava.com/activities/${activity.id}`}>{activity.type}</a>
+                  <a className="a--dark" href={`https://strava.com/activities/${activity.id}`}>
+                    {activity.type}
+                  </a>
                 </td>
                 <td>{formatDatetime(activity.start_date_local)}</td>
                 <td>{Math.round(activity.elapsed_time / 60)}</td>

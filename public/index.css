@@ -20,7 +20,8 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-family: 'Fira Sans', sans-serif;
 }
 *,
 *:before,
@@ -36,7 +37,7 @@ body {
 .header-hero {
   margin: 0 auto;
   overflow: hidden;
-  font-family: 'Times New Roman';
+  font-family: 'Fira Sans';
 }
 
 /* This looks kinda neat, like the text above MIT buildings,
@@ -139,6 +140,10 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   box-shadow: 0px 4px 4px #002b36;
 }
 
+.a--dark {
+  color: #fdf6e3;
+}
+
 #footer {
   background-color: var(--bg-dark);
   height: 50px;
@@ -152,7 +157,7 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
     s size. */
 }
 
-.DailyActivityTable-input {
+.DailyActivityTable-textarea {
   width: 400px;
   height: 150px;
 }
