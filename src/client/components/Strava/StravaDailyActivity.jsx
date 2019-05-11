@@ -1,11 +1,10 @@
 // @flow
 import * as React from 'react';
 import axios from 'axios';
-import type {Activities, Activity} from './Strava';
+import type {Activities} from './Strava';
 import DailyActivityTable from './DailyActivityTable';
 
 const dateExtractorRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}/;
-const millisecondsInDay = 1000 * 60 * 60 * 24;
 
 const isSameDate = (date1: string, date2: string) => {
   // Assumes both at least start with the string "YYYY-MM-DD"
@@ -74,7 +73,8 @@ const getUniqueActivityDates = (activities: Activities): Array<string> => {
 };
 
 const dateStringRelativeToToday = (daysBack: number = 0): string => {
-  const date = new Date(new Date() - millisecondsInDay * daysBack);
+  const date = new Date();
+  date.setDate(date.getDate() - daysBack);
   return constructStringFromDate(date);
 };
 
@@ -124,7 +124,7 @@ const constructWeeklyDates = (initialDate: string, endDate: string): Array<Array
   // before the Wednesday in the given week.)
   // We do this by comparing each day against a correction, which allows some days
   // of the week to have an extra date.
-  let currDate = constructDateFromString(endDate);
+  const currDate = constructDateFromString(endDate);
   // This const looks silly but is important - otherwise we're closing on currDate,
   // which changes each iteration.
   const currDateDay = currDate.getDay();
@@ -149,9 +149,8 @@ const constructWeeklyDates = (initialDate: string, endDate: string): Array<Array
       datesRemaining = false;
     }
     // Go back one day and do it all again!
-    currDate = new Date(currDate - millisecondsInDay);
+    currDate.setDate(currDate.getDate() - 1);
   }
-
   return weeksWithDays;
 };
 
