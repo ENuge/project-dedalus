@@ -73,15 +73,16 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   display: none;
 
   position: absolute;
-  background-color: #002b36;
+  background-color: rgba(0, 43, 54, 0.8);
   color: #fdf6e3;
-  top: -115%;
+  top: -200%;
   /* Centers the element relative to parent. */
   left: 50%;
   transform: translate(-50%, 0);
 
   width: 120px;
   text-align: center;
+  border-radius: 2px;
 }
 
 .daily-activity-cell:hover .daily-activity-tooltip {
