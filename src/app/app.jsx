@@ -6,7 +6,8 @@ import {renderToString} from 'react-dom/server';
 import express from 'express';
 import type {$Request, $Response} from 'express';
 
-import ReactBase from '../client/ReactBase';
+import IndexReactBase from '../client/IndexReactBase';
+import DedalusReactBase from '../client/DedalusReactBase';
 import htmlTemplate from '../client/template';
 import handleQotd from './qotd';
 import {getStrava, hydrateStrava, postStrava} from './strava';
@@ -16,16 +17,20 @@ const app = express();
 
 app.use(express.json());
 
-const handleRender = (req: $Request, res: $Response) => {
-  // res.writeHead(200, { 'Content-Type': 'text/plain' });
-  const reactRenderedHtml = renderToString(<ReactBase />);
+const handleIndexRender = (req: $Request, res: $Response) => {
+  const reactRenderedHtml = renderToString(<IndexReactBase />);
   const document = htmlTemplate(reactRenderedHtml);
   res.send(document);
 };
 
-app.get('/', handleRender);
+const handleDedalusRender = (req: $Request, res: $Response) => {
+  const reactRenderedHtml = renderToString(<DedalusReactBase />);
+  const document = htmlTemplate(reactRenderedHtml);
+  res.send(document);
+};
 
-app.get('/ajax/foo', (req: $Request, res: $Response) => res.send('hi'));
+app.get('/', handleIndexRender);
+app.get('/dedalus', handleDedalusRender);
 
 app.get('/ajax/qotd', handleQotd);
 
