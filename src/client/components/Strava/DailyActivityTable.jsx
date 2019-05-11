@@ -45,7 +45,13 @@ class DailyActivityTable extends React.Component<Props, State> {
     this.setState({editingActivity: null});
   };
 
-  handleDescriptionChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
+  handleMaybeSubmitShortcut = (event: SyntheticInputEvent<*>) => {
+    if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+      this.handleDescriptionSubmit(event);
+    }
+  };
+
+  handleDescriptionChange = (event: SyntheticInputEvent<*>) => {
     // Note that only a submit POSTs the data back to Strava - make that clear in the UX.
     // (Right now it's not at all obvious!)
     event.preventDefault(); // Just to be safe
@@ -61,7 +67,7 @@ class DailyActivityTable extends React.Component<Props, State> {
     this.setState({activities: newActivities, editingActivity: newEditingActivity});
   };
 
-  handleDescriptionSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
+  handleDescriptionSubmit = (event: SyntheticEvent<*>) => {
     event.preventDefault();
     const {editingActivity} = this.state;
     axios.post('/ajax/strava', editingActivity);
@@ -83,13 +89,13 @@ class DailyActivityTable extends React.Component<Props, State> {
           </h3>
           <form onSubmit={this.handleDescriptionSubmit}>
             <label htmlFor={`${editingActivity.id}-activity-description`}>
-              Edit:{' '}
               <textarea
                 id={`${editingActivity.id}-activity-description`}
                 className="DailyActivityTable-textarea"
                 type="text"
                 value={editingActivity.description || ''}
                 onChange={this.handleDescriptionChange}
+                onKeyDown={this.handleMaybeSubmitShortcut}
                 placeholder="Describe the workout! Was it good, bad, ugly? Are you slipping? Or are you killing it?"
               />
             </label>
