@@ -81,11 +81,6 @@ body {
   flex-wrap: wrap;
 }
 
-#flex-spacer {
-  max-width: 200px;
-  flex-shrink: 1;
-}
-
 /* Basically positions the sidebar nav to the left and
 lets everything else take up the rest of page */
 #main-content-structure {
@@ -263,9 +258,5 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
 
   #main-content {
     margin-left: 8px;
-  }
-
-  #flex-spacer {
-    width: 0px;
   }
 }

@@ -15,7 +15,6 @@ const Header = () => (
         <div className="sidebar-nav-item">notes</div>
         <div className="sidebar-nav-item">thoughts</div>
       </div>
-      <div id="flex-spacer" />
       <div id="main-content">
         <h1>This is my title</h1>
         <p>
