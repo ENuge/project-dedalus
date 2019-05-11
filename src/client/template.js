@@ -7,6 +7,7 @@ const htmlTemplate = (reactDom: string) => `
           <title>Project Dedalus</title>
           <link rel="shortcut icon" type="image/ico" href="public/favicon.ico"/>
           <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,300,400" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
           <link rel="stylesheet" type="text/css" href="public/index.css"/>
         </head>
       

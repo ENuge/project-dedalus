@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactBase from './ReactBase';
+import IndexReactBase from './IndexReactBase';
 
-ReactDOM.hydrate(<ReactBase />, document.getElementById('app'));
+ReactDOM.hydrate(<IndexReactBase />, document.getElementById('app'));

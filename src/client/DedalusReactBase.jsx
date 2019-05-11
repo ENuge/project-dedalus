@@ -2,10 +2,10 @@
 import React from 'react';
 import QuoteOfTheDay from './components/QuoteOfTheDay';
 import Strava from './components/Strava/Strava';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/dedalus/Header';
+import Footer from './components/dedalus/Footer';
 
-const ReactBase = () => (
+const DedalusReactBase = () => (
   <React.Fragment>
     <Header />
     <div className="content">
@@ -15,4 +15,4 @@ const ReactBase = () => (
     <Footer />
   </React.Fragment>
 );
-export default ReactBase;
+export default DedalusReactBase;

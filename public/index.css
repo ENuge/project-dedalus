@@ -1,5 +1,6 @@
 /* Color scheme created using coolors.com, based on rolling the
 dice around the solarizeds until I was satisfied. */
+/* This is only for Project Dedalus, everything else is its own new thing */
 :root {
   --bg-light: #fdf6e3; /* solarized-light */
   --bg-dark: #002b36; /* solarized-dark */
@@ -13,6 +14,16 @@ dice around the solarizeds until I was satisfied. */
   /* Other reused constants */
   --daily-activity-cell-size: 20px;
 }
+
+@font-face {
+  font-family: 'LiterataBook-Regular';
+  src: url('font/LiterataBook-Regular.woff') format('woff');
+}
+
+/* @font-face {
+  font-family: LiterataBook-Italic;
+  src: url('path/tofile.woff') format('woff');
+} */
 
 /* Base CSS Resets */
 html,
@@ -29,20 +40,84 @@ body {
   box-sizing: inherit;
 }
 
-#header {
+#dedalus-header {
   height: var(--header-height);
   background-color: var(--bg-header);
 }
 
-.header-hero {
+/* TODO: For now, I'm going with pure text. */
+/* #header {
+  height: var(--header-height);
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(151, 10, 130, 1) 0%,
+    rgba(33, 33, 33, 1) 100.2%
+  );
+} */
+
+.dedalus-header-hero {
   margin: 0 auto;
   overflow: hidden;
   font-family: 'Fira Sans';
 }
 
+.header-hero {
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 64px;
+
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+#sidebar-nav {
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 18px;
+  flex-grow: 0;
+
+  margin-left: 24px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+/* Basically positions the sidebar nav to the left and
+lets everything else take up the rest of page */
+#main-content-structure {
+  display: flex;
+
+  /* Presumably this should make the sidebar responsive? */
+  flex-wrap: wrap;
+}
+
+#main-content {
+  font-family: 'LiterataBook-Regular', serif;
+
+  /* For paragraph text, _not_ for full-screen images etc. */
+  max-width: 500px;
+  line-height: 1.4;
+  font-size: 18px;
+  margin-left: 44px;
+  margin-right: 8px;
+}
+
+#main-content h1 {
+  font-size: 20px;
+}
+
+#main-content p {
+  font-size: 18px;
+}
+
+.sidebar-nav-item {
+  margin-bottom: 12px;
+  margin-top: 12px;
+  margin-right: 12px;
+}
+
 /* This looks kinda neat, like the text above MIT buildings,
 at ~60% screen size, and kinda dumb as the page gets smaller. */
-.banner-text {
+.dedalus-banner-text {
   color: var(--bg-light); /* TODO: If this actually looks ok, I should change the var names... */
   text-transform: uppercase;
   text-align: center;
@@ -161,4 +236,27 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
 .DailyActivityTable-textarea {
   width: 400px;
   height: 150px;
+}
+
+@media only screen and (max-width: 700px) {
+  #sidebar-nav {
+    /* On small screen, space the nav options horizontally,
+    as the viewport narrows, take from the space between them
+    but keep them on one line. */
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-between;
+
+    margin-right: 24px;
+  }
+
+  .sidebar-nav-item {
+    /* Fixes the spacing for the horizontal flex-align'ing above. */
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+
+  #main-content {
+    margin-left: 8px;
+  }
 }
