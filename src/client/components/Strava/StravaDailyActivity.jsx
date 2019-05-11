@@ -282,9 +282,9 @@ class StravaDailyActivity extends React.Component<Props, State> {
                             style={{backgroundColor: `rgb(34, 139, 34, ${dayRankings[day]})`}}
                           >
                             <div className="daily-activity-tooltip">
-                              {/* TODO: Make this pretty. */}
-                              {day.slice(5)}: {getBasicActivitiesForDate(day, activities).length}{' '}
-                              activities
+                              {day.slice(5)}
+                              <br />
+                              {getBasicActivitiesForDate(day, activities).length} activities
                             </div>
                           </div>
                         </div>
