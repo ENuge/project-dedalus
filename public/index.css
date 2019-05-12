@@ -20,10 +20,10 @@ dice around the solarizeds until I was satisfied. */
   src: url('font/LiterataBook-Regular.woff') format('woff');
 }
 
-/* @font-face {
-  font-family: LiterataBook-Italic;
-  src: url('path/tofile.woff') format('woff');
-} */
+@font-face {
+  font-family: 'LiterataBook-Italic';
+  src: url('path/LiterataBook-Italic.woff') format('woff');
+}
 
 /* Base CSS Resets */
 html,
@@ -107,6 +107,10 @@ lets everything else take up the rest of page */
 
 #main-content p {
   font-size: 18px;
+}
+
+#main-content em {
+  font-family: 'LiterataBook-Italic', italic;
 }
 
 .sidebar-nav-item {

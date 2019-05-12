@@ -1,5 +1,8 @@
 // @flow
-const htmlTemplate = (reactDom: string) => `
+// appType is used to determine which react to hydrate with client-side.
+// the dedalus stuff should all be removed and just use the same assets...
+// buuut I'm not quite there yet. Shrug.
+const htmlTemplate = (reactDom: string, appType: string) => `
     <!DOCTYPE html>
       <html>
         <head>
@@ -12,7 +15,7 @@ const htmlTemplate = (reactDom: string) => `
         </head>
       
       <body>
-        <div id="app">${reactDom}</div>
+        <div id="app-${appType}">${reactDom}</div>
         <script src="public/bundle.js"></script>
       </body>
     </html>

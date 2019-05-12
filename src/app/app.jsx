@@ -19,13 +19,13 @@ app.use(express.json());
 
 const handleIndexRender = (req: $Request, res: $Response) => {
   const reactRenderedHtml = renderToString(<IndexReactBase />);
-  const document = htmlTemplate(reactRenderedHtml);
+  const document = htmlTemplate(reactRenderedHtml, 'index');
   res.send(document);
 };
 
 const handleDedalusRender = (req: $Request, res: $Response) => {
   const reactRenderedHtml = renderToString(<DedalusReactBase />);
-  const document = htmlTemplate(reactRenderedHtml);
+  const document = htmlTemplate(reactRenderedHtml, 'dedalus');
   res.send(document);
 };
 
