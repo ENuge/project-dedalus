@@ -119,6 +119,11 @@ lets everything else take up the rest of page */
   margin-right: 12px;
 }
 
+.sidebar-nav-item > a {
+  text-decoration: none;
+  color: black;
+}
+
 /* This looks kinda neat, like the text above MIT buildings,
 at ~60% screen size, and kinda dumb as the page gets smaller. */
 .dedalus-banner-text {
