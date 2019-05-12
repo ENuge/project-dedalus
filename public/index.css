@@ -20,10 +20,10 @@ dice around the solarizeds until I was satisfied. */
   src: url('font/LiterataBook-Regular.woff') format('woff');
 }
 
-/* @font-face {
-  font-family: LiterataBook-Italic;
-  src: url('path/tofile.woff') format('woff');
-} */
+@font-face {
+  font-family: 'LiterataBook-Italic';
+  src: url('path/LiterataBook-Italic.woff') format('woff');
+}
 
 /* Base CSS Resets */
 html,
@@ -109,10 +109,19 @@ lets everything else take up the rest of page */
   font-size: 18px;
 }
 
+#main-content em {
+  font-family: 'LiterataBook-Italic', italic;
+}
+
 .sidebar-nav-item {
   margin-bottom: 12px;
   margin-top: 12px;
   margin-right: 12px;
+}
+
+.sidebar-nav-item > a {
+  text-decoration: none;
+  color: black;
 }
 
 /* This looks kinda neat, like the text above MIT buildings,

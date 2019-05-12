@@ -17,19 +17,23 @@ const app = express();
 
 app.use(express.json());
 
+const availableTopLevelPages = ['/about', '/coffee', '/tech', '/notes', '/thoughts'];
+
 const handleIndexRender = (req: $Request, res: $Response) => {
-  const reactRenderedHtml = renderToString(<IndexReactBase />);
-  const document = htmlTemplate(reactRenderedHtml);
+  const topLevelPage = req.path.slice(1);
+  const reactRenderedHtml = renderToString(<IndexReactBase topLevelPage={topLevelPage} />);
+  const document = htmlTemplate(reactRenderedHtml, 'index');
   res.send(document);
 };
 
 const handleDedalusRender = (req: $Request, res: $Response) => {
   const reactRenderedHtml = renderToString(<DedalusReactBase />);
-  const document = htmlTemplate(reactRenderedHtml);
+  const document = htmlTemplate(reactRenderedHtml, 'dedalus');
   res.send(document);
 };
 
 app.get('/', handleIndexRender);
+app.get(availableTopLevelPages, handleIndexRender);
 app.get('/dedalus', handleDedalusRender);
 
 app.get('/ajax/qotd', handleQotd);
