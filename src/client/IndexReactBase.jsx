@@ -3,10 +3,16 @@ import React from 'react';
 import Header from './components/site/Header';
 import Sidebar from './components/site/Sidebar';
 import AboutContent from './components/site/AboutContent';
+import TechContent from './components/site/TechContent';
 import WIPContent from './components/site/WIPContent';
+import NotesContent from './components/site/NotesContent';
+import ThoughtsContent from './components/site/ThoughtsContent';
 
 const PageContent = ({page}: {page: string}) => {
   if (page === 'about') return <AboutContent />;
+  if (page === 'tech') return <TechContent />;
+  if (page === 'notes') return <NotesContent />;
+  if (page === 'thoughts') return <ThoughtsContent />;
   return <WIPContent />;
 };
 
