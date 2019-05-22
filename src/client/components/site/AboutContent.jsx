@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AboutContent = () => (
-  <div id="main-content">
+  <>
     <h1>I'm Eoin Nugent</h1>
     <p>
       I make things on the Internet. Mostly bad puns and obscure references, but occasionally some
@@ -48,12 +48,6 @@ const AboutContent = () => (
       for myself that tackles systems-level and devops infrastructure more directly.
     </p>
     <p>
-      In previous states of mind: Joyce/Beckett-esque Modernism and its profound dis/respect for
-      social constructions (especially language) caught my fancy; I had a go at learning French for
-      a bit that I want to return to Some Day™; and I poked a bit at each subject I chose,
-      deliberately or not, to not major in at college—I don't think I retained much from that.
-    </p>
-    <p>
       If you made it past all the virtue signaling, mad props to you. I also listen to a lot of
       JAY-Z, Kanye, and any sort of pump-me-up hip hop. I highly value not taking myself too
       seriously (I swear!) and love sarcasm and jokes, particularly self-referential in-jokes. My
@@ -68,7 +62,7 @@ const AboutContent = () => (
     <p>email: [First initial first name][Last name] AT hmc DOT edu</p>
     <p>LinkedIn</p>
     <p>Twitter</p>
-  </div>
+  </>
 );
 
 export default AboutContent;
