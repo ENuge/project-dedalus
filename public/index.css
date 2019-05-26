@@ -22,7 +22,7 @@ dice around the solarizeds until I was satisfied. */
 
 @font-face {
   font-family: 'LiterataBook-Italic';
-  src: url('path/LiterataBook-Italic.woff') format('woff');
+  src: url('font/LiterataBook-Italic.woff') format('woff');
 }
 
 /* Base CSS Resets */
