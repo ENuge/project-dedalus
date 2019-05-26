@@ -9,6 +9,7 @@ import NotesContent from './components/site/NotesContent';
 import ThoughtsContent from './components/site/ThoughtsContent';
 
 const PageContent = ({page}: {page: string}) => {
+  if (page === '') return <AboutContent />;
   if (page === 'about') return <AboutContent />;
   if (page === 'tech') return <TechContent />;
   if (page === 'notes') return <NotesContent />;
