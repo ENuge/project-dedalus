@@ -33,6 +33,7 @@ body {
   padding: 0;
   font-weight: 300;
   font-family: 'Fira Sans', sans-serif;
+  background-color: #fcfcfc;
 }
 *,
 *:before,
@@ -78,6 +79,8 @@ body {
 
 #sidebar-nav {
   font-family: 'Didact Gothic', sans-serif;
+  position: absolute;
+  top: 100px;
   font-size: 18px;
   flex-grow: 0;
 
@@ -88,13 +91,9 @@ body {
   flex-wrap: wrap;
 }
 
-/* Basically positions the sidebar nav to the left and
-lets everything else take up the rest of page */
+/* TODO: Empty for now, but a container that lets content
+beyond the text width limit exist on page. */
 #main-content-structure {
-  display: flex;
-
-  /* Presumably this should make the sidebar responsive? */
-  flex-wrap: wrap;
 }
 
 #main-content {
@@ -104,8 +103,8 @@ lets everything else take up the rest of page */
   max-width: 500px;
   line-height: 1.4;
   font-size: 18px;
-  margin-left: 44px;
-  margin-right: 8px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #main-content h1 {
@@ -269,6 +268,12 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
     flex-grow: 1;
     justify-content: space-between;
 
+    /* HACK: These width values happen to get the rightmost sidebar
+    element aligned properly, but it's purely by visual inspection
+    and assumes Chrome's scrollbar width. */
+    width: calc(100% - 24px);
+    padding-right: 24px;
+
     margin-right: 24px;
   }
 
@@ -278,8 +283,11 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
     margin-right: 0px;
   }
 
-  #main-content {
-    margin-left: 8px;
+  #main-content-structure {
+    /* The sidebar is absolute-positioned, but horizontally at small
+    sizes. This pushes the main content to be below it without overlapping.
+    The number is based purely on visual inspection (whee!). */
+    margin-top: 62px;
   }
 }
 
@@ -287,7 +295,6 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   #main-content {
     font-size: 22px;
     max-width: 600px;
-    margin-left: 88px;
   }
 
   #main-content h1 {
@@ -296,11 +303,5 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
 
   #main-content p {
     font-size: 22px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  #main-content {
-    margin-left: 132px;
   }
 }

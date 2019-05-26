@@ -20,9 +20,8 @@ const IndexReactBase = ({topLevelPage}: {topLevelPage: string}) => {
   return (
     <React.Fragment>
       <Header />
+      <Sidebar />
       <div id="main-content-structure">
-        <Sidebar />
-        <div id="flex-spacer" />
         <div id="main-content">
           <PageContent page={topLevelPage} />
         </div>
