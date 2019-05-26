@@ -10,7 +10,6 @@ const NotesContent = () => (
       when you know you want to believe the argument. So my notes are frequently snarky or
       half-complete, or exist purely to jot my memory. But maybe you too will get value from them.
     </p>
-    <div id="big-picture" />
   </>
 );
 

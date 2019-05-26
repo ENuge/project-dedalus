@@ -41,6 +41,11 @@ body {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: #006eff;
+}
+
 #dedalus-header {
   height: var(--header-height);
   background-color: var(--bg-header);
