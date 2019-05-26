@@ -80,7 +80,7 @@ body {
 #sidebar-nav {
   font-family: 'Didact Gothic', sans-serif;
   position: absolute;
-  top: 100px;
+  top: 106px;
   font-size: 18px;
   flex-grow: 0;
 
@@ -288,20 +288,5 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
     sizes. This pushes the main content to be below it without overlapping.
     The number is based purely on visual inspection (whee!). */
     margin-top: 62px;
-  }
-}
-
-@media only screen and (min-width: 900px) {
-  #main-content {
-    font-size: 22px;
-    max-width: 600px;
-  }
-
-  #main-content h1 {
-    font-size: 24px;
-  }
-
-  #main-content p {
-    font-size: 22px;
   }
 }
