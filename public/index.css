@@ -15,16 +15,6 @@ dice around the solarizeds until I was satisfied. */
   --daily-activity-cell-size: 20px;
 }
 
-@font-face {
-  font-family: 'LiterataBook-Regular';
-  src: url('font/LiterataBook-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'LiterataBook-Italic';
-  src: url('font/LiterataBook-Italic.woff') format('woff');
-}
-
 /* Base CSS Resets */
 html,
 body {
@@ -102,7 +92,10 @@ beyond the text width limit exist on page. */
 }
 
 #main-content {
-  font-family: 'LiterataBook-Regular', serif;
+  font-family: source-serif-pro, serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #1b2733;
 
   /* For paragraph text, _not_ for full-screen images etc. */
   max-width: 500px;
@@ -113,7 +106,8 @@ beyond the text width limit exist on page. */
 }
 
 #main-content h1 {
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 300;
 }
 
 #main-content p {
@@ -121,7 +115,8 @@ beyond the text width limit exist on page. */
 }
 
 #main-content em {
-  font-family: 'LiterataBook-Italic', italic;
+  font-family: source-serif-pro, serif;
+  font-style: italic;
 }
 
 #big-picture {

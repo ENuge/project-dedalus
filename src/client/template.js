@@ -11,6 +11,8 @@ const htmlTemplate = (reactDom: string, appType: string) => `
           <link rel="shortcut icon" type="image/ico" href="public/favicon.ico"/>
           <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,300,400" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+          <!-- The link below is to source-serif-pro: light+regular and bold/italics. -->
+          <link rel="stylesheet" href="https://use.typekit.net/wih6fdh.css">
           <link rel="stylesheet" type="text/css" href="public/index.css"/>
         </head>
       
