@@ -263,11 +263,22 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   position: fixed;
   width: 100%;
   /* height: 100%; */
-  background-color: lightgray;
   /* forces it to be an overlay on everything */
   z-index: 5000;
   top: 10px;
   left: 50px;
+}
+
+img {
+  image-orientation: from-image;
+}
+
+.rotate90 {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 @media only screen and (max-width: 700px) {

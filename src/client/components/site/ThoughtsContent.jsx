@@ -5,11 +5,13 @@ const ThoughtsContent = () => (
   <>
     <h1>219 Times Different: Ethiopia and Monaco, Back to Back</h1>
     <p>
-      (The photos can be clicked to expand to full-screen. Click them again to minimize them. Sorry
-      if the tool is terrible, like all great things I{"'"}
-      ll make it good when I have time.
+      (The photos can be clicked to expand to full-screen (or right-click, "Open image in new tab"
+      to get the full raw image). Click them again to minimize them. Sorry if the tool is terrible,
+      like all not-great things I{"'"}
+      ll make it good when I have time. The portrait photos are also stretched. Sorry!)
     </p>
-    <ExpandableImage alt="Monaco's skyline" src="public/monaco_skyline.jpg" width="500px" />
+    <ExpandableImage alt="Ethiopia's Merkato" src="public/img/merkato_birds_eye.jpg" />
+    <ExpandableImage alt="Monaco's skyline" src="public/img/monaco_skyline.jpg" />
     <p>
       Ethiopia
       {"'"}s nominal GDP per capita, according to the World Bank, was $768 in 2017. [0] Monaco
@@ -17,28 +19,23 @@ const ThoughtsContent = () => (
       days, the mean Monacan
       {"'"}s contribution to their country
       {"'"}s total productive output eclipses the output of the mean Ethiopian
-      {"'"}s over an entire year. Hence, the {'"'}
+      {"'"}s over an entire year. These numbers are the basis of the {'"'}
       219 times different
-      {'"'} I mention in the title.
+      {'"'} mentioned in the title
     </p>
     <p>
       Somewhat thankfully, those numbers don
-      {"'"}t really tell you much of anything. For one, there is no {'"'}
-      mean
-      {'"'} Monacan, nor is there an equivalent Ethiopian. Without more granular data, it
-      {"'"}s hard to tell what exactly those numbers mean for the people you are most likely to
-      encounter day to day in either country. (Moreover, GDP is a poor metric of well-being,
-      especially if it
-      {"'"}s not controlled for purchasing power.)
+      {"'"}t really tell you much of anything. I don
+      {"'"}t have better numbers to share in their stead, but I do have photos!
     </p>
     <p>
-      I don
-      {"'"}t have that data. But I do have photos! So, here
+      So, here
       {"'"}s my still-forming impression of the two countries, an extremely reductive, simplistic
       cracked-lookingglass-from-a-distance view of over 100 million people. If you
       {"'"}d prefer some brow-pushing brownie points, you can consider it a modern
       Dionysian/Apollonian dialectic, in economic terms.
     </p>
+    <ExpandableImage alt="Meskel Square" src="public/img/meskel_square.jpg" />
     <p>
       We
       {"'"}
@@ -52,6 +49,11 @@ const ThoughtsContent = () => (
       {"'"}s Ethiopia by the numbers[2], and it
       {"'"}s extremely visible in the cities.
     </p>
+    <ExpandableImage
+      alt="Undeveloped and developed"
+      src="public/img/undeveloped_and_developed.jpg"
+      rotate90
+    />
     <p>
       Walking through Addis is like walking through a time-lapse photo, just without the stylized
       red streaks of taillights. There are very few old buildings, but very many unfinished ones -
@@ -60,6 +62,7 @@ const ThoughtsContent = () => (
       point. The only constant in Addis is change - the city ten years from now will be completely
       different from the one I just visited.
     </p>
+    <ExpandableImage alt="Ethiopian coffee" src="public/img/ethiopia_coffee.jpg" rotate90 />
     <p>
       Well, change and coffee, I suppose. Around 15% of the country
       {"'"}s people derive their livelihoods from coffee. The rest just derive their well-being and
@@ -69,6 +72,30 @@ const ThoughtsContent = () => (
       made up just one of the three such ceremonies Dennis said they have there every day. So 9
       strong cups of coffee a day - and I thought my 2-3 a day was bad!
     </p>
+    <ExpandableImage
+      alt="Ethiopians carrying stuff"
+      src="public/img/ethiopia_market_carrying.jpg"
+      rotate90
+    />
+    <ExpandableImage
+      alt="Ethiopians carrying even more stuff"
+      src="public/img/ethiopia_more_carrying.jpg"
+      rotate90
+    />
+    <ExpandableImage
+      alt="Merkato full of stuff"
+      src="public/img/ethiopia_market_stuff.jpg"
+      rotate90
+    />
+    <ExpandableImage
+      alt="Insides of Merkato - showing off cool basketry"
+      src="public/img/ethiopia_market_indoor.jpg"
+    />
+    <ExpandableImage
+      alt="Lalibela market in the north of Ethiopia"
+      src="public/img/lalibela_market.jpg"
+      rotate90
+    />
     <p>
       I{"'"}m getting tired of narrating, so I{"'"}m going to turn this over more to the photo side
       of a photo {'"'}
@@ -101,6 +128,36 @@ const ThoughtsContent = () => (
       {"'"}s green (we
       {"'"}d be more used to its smell...which approximates a bad egg times 100).
     </p>
+    <ExpandableImage alt="The scenery in Lalibela" src="public/img/lalibela_scenery_1.jpg" />
+    <ExpandableImage
+      alt="Lalibela rock-hewn churches"
+      src="public/img/lalibela_churches.jpg"
+      rotate90
+    />
+    <ExpandableImage
+      alt="Lalibela rockier scenery"
+      src="public/img/lalibela_beautiful_scenery.jpg"
+    />
+    <ExpandableImage alt="Camels in Danakil Depression" src="public/img/camels_in_desert.jpg" />
+    <ExpandableImage alt="Mad Max rocks" src="public/img/mad_max_rocks.jpg" />
+    <ExpandableImage alt="Brown salt flats" src="public/img/salt_flats_brown.jpg" rotate90 />
+    <ExpandableImage alt="Danakil Crags" src="public/img/danakil_scrags.jpg" />
+    <ExpandableImage alt="Lalibela salt lakes" src="public/img/salt_lake.jpg" />
+    <ExpandableImage
+      alt="Danakil salt flats - many colors!"
+      src="public/img/danakil_salt_multicolor_2.jpg"
+      rotate90
+    />
+    <ExpandableImage
+      alt="Danakil salt flats - many colors!"
+      src="public/img/danakil_salt_multicolor.jpg"
+      rotate90
+    />
+    <ExpandableImage
+      alt="Danakil salt flats - many colors!"
+      src="public/img/danakil_salt_flats_3.jpg"
+      rotate90
+    />
     <p>
       The Mad Max-style rock mountains were formed by surface ruptures thousands (millions? a really
       long time?) of years ago, back when all of this was part of the sea. They
@@ -154,8 +211,16 @@ const ThoughtsContent = () => (
       {"'"}t know enough about Ethiopian government economic policy to comment further, but that
       {"'"}s my understanding of the state of things.
     </p>
-    <p>And...here are the rest of the pictures!</p>
     <h1>And now, over to you, Monaco. </h1>
+    <ExpandableImage
+      alt="Outside the Monte Carlo - note the casual Maybach"
+      src="public/img/monte_carlo_outside_maybach.jpg"
+      rotate90
+    />
+    <ExpandableImage
+      alt="Side view of the Monaco skyline"
+      src="public/img/monaco_skyline_side.jpg"
+    />
     <p>
       Monaco is absolutely stunning, I{"'"}
       ll admit that. But one of my main takeaways from leaving the city was that there
@@ -195,6 +260,11 @@ const ThoughtsContent = () => (
       incredible, the gardens edenic, it
       {"'"}s still just another place.
     </p>
+    <ExpandableImage
+      alt="Pretty apartments in Monaco"
+      src="public/img/monaco_pretty_apartments.jpg"
+      rotate90
+    />
     <p>
       I suppose the main takeaway here is simply: {'"'}
       Think you
@@ -210,12 +280,37 @@ const ThoughtsContent = () => (
     </p>
     <p>
       Now that I{"'"}
-      ve gotten all super deep and stuff, here are some other photos:
+      ve gotten all super deep and stuff, here are the rest of the interesting photos:
     </p>
-    <p>[0] https://data.worldbank.org/indicator/ny.gdp.pcap.cd , search the page for Ethiopia.</p>
+    <ExpandableImage
+      alt="A walkway leading to Monaco's subway. Very casual."
+      src="public/img/monaco_inside_subway.jpg"
+      rotate90
+    />
+    <ExpandableImage alt="A view of Monaco's port" src="public/img/monaco_port.jpg" />
+    <ExpandableImage
+      alt="Monaco setting up for the Grand Prix - you can walk right on the tracks!"
+      src="public/img/monaco_before_grand_prix.jpg"
+      rotate90
+    />
+    <ExpandableImage
+      alt="The inside of the Casino de Monte Carlo"
+      src="public/img/monte_carlo_inside.jpg"
+      rotate90
+    />
     <p>
-      [1] https://data.worldbank.org/indicator/ny.gdp.pcap.cd , search the page for Monaco, do a bit
-      of math...voila.
+      [0]{' '}
+      <a href="https://data.worldbank.org/indicator/ny.gdp.pcap.cd">
+        https://data.worldbank.org/indicator/ny.gdp.pcap.cd
+      </a>{' '}
+      , search the page for Ethiopia.
+    </p>
+    <p>
+      [1]{' '}
+      <a href="https://data.worldbank.org/indicator/ny.gdp.pcap.cd">
+        https://data.worldbank.org/indicator/ny.gdp.pcap.cd
+      </a>{' '}
+      , search the page for Monaco, do a bit of math...voilà.
     </p>
     <p>
       [2] And to continue to be explicit with the GDP-poo poo
@@ -226,7 +321,7 @@ const ThoughtsContent = () => (
       real Celtic Liger occur? Mostly because Apple moved a huge amount of its assets to Ireland for
       tax evasion purposes. Can
       {"'"}t beat some good ol
-      {"'"} leprechaun economics.
+      {"'"} <a href="https://en.wikipedia.org/wiki/Leprechaun_economics">leprechaun economics</a>.
     </p>
   </>
 );

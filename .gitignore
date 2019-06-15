@@ -3,3 +3,4 @@ build/
 .vscode/
 public/bundle.js
 cached/
+.DS_Store
