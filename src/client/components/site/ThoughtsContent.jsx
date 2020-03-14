@@ -5,6 +5,10 @@ const ThoughtsContent = () => (
   <>
     <h1>219 Times Different: Ethiopia and Monaco, Back to Back</h1>
     <p>
+      Caveat: I wrote this mostly for my parents, who've never had the opportunities
+      to travel that I've had.
+    </p>
+    <p>
       (The photos can be clicked to expand to full-screen (or right-click, "Open image in new tab"
       to get the full raw image). Click them again to minimize them. I'm sorry that the tool is terrible—
       like all not-great things I{"'"}
@@ -130,7 +134,7 @@ const ThoughtsContent = () => (
       alt="Lalibela rockier scenery"
       src="https://storage.cloud.google.com/dedalus-assets/img/lalibela_beautiful_scenery.jpeg"
     />
-    <ExpandableImage alt="Camels in Danakil Depression" src="https://storage.cloud.google.com/dedalus-assets/img/camels_in_desert.jpeg" />
+    <ExpandableImage alt="Camels in Danakil Depression" src="https://storage.cloud.google.com/dedalus-assets/img/camels_in_desert.jpg" />
     <ExpandableImage alt="Mad Max rocks" src="https://storage.cloud.google.com/dedalus-assets/img/mad_max_rocks.jpeg" />
     <ExpandableImage alt="Brown salt flats" src="https://storage.cloud.google.com/dedalus-assets/img/salt_flats_brown.jpeg" />
     <ExpandableImage alt="Danakil Crags" src="https://storage.cloud.google.com/dedalus-assets/img/danakil_scrags.jpeg" />
