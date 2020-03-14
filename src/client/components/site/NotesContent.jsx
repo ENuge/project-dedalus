@@ -2,7 +2,7 @@ import React from 'react';
 
 const NotesContent = () => (
   <>
-    <h1>Life is too short to read a bad book</h1>
+    <h1>(WIP): Life is too short to read a bad book</h1>
     <p>
       So let me read them for you! I try to take notes while consuming long-form content. Otherwise
       I find it difficult to stay engaged and will begin taking the author at their word on

@@ -8,16 +8,17 @@ import WIPContent from './components/site/WIPContent';
 import NotesContent from './components/site/NotesContent';
 import ThoughtsContent from './components/site/ThoughtsContent';
 
-const PageContent = ({page}: {page: string}) => {
+const PageContent = ({ page }: { page: string }) => {
   if (page === '') return <AboutContent />;
   if (page === 'about') return <AboutContent />;
   if (page === 'tech') return <TechContent />;
   if (page === 'notes') return <NotesContent />;
   if (page === 'thoughts') return <ThoughtsContent />;
+  if (page === 'thoughts/monaco-ethiopia-2018') return <ThoughtsContent />;
   return <WIPContent />;
 };
 
-const IndexReactBase = ({topLevelPage}: {topLevelPage: string}) => {
+const IndexReactBase = ({ topLevelPage }: { topLevelPage: string }) => {
   return (
     <React.Fragment>
       <Header />
@@ -26,7 +27,6 @@ const IndexReactBase = ({topLevelPage}: {topLevelPage: string}) => {
         <div id="main-content">
           <PageContent page={topLevelPage} />
         </div>
-        {/* <div className="content" /> */}
       </div>
     </React.Fragment>
   );

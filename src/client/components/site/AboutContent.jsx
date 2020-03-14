@@ -20,11 +20,9 @@ const AboutContent = () => (
     <h1>Work</h1>
     <p>
       I work at Stripe, in Dublin. We're building the economic infrastructure for the Internet.
-      Within Stripe I build testing infrastructure so other engineers can be more productive. Think:
-      Jenkins, but also performance optimization, high-leverage UI/UX flows, and some nice fuzzy
-      questions like "when should we run a test and what does its result even <em>mean</em>
-      ". If any of this interests you, please do reach out—my contact info is at the end of the
-      page.
+      Within Stripe I work on local payment methods in Europe, the Middle East, and Africa. I've also
+      worked on developer platform (think: the APIs, docs, and surrounding ecosystem) and developer
+      tooling (in particular, test infrastructure). If any of that interests you, please do reach out!
     </p>
     <h1>Personal</h1>
     <p>
