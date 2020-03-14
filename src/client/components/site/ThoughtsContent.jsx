@@ -179,7 +179,7 @@ const ThoughtsContent = () => (
       world, or require exactly the sort of solution that was extremely non-trivial even in the US
       just five years ago. Which is to say, many of the problems here are tractable, the physical
       infrastructure (wiring, etc) is mostly good enough, where applying very modern solutions can
-      lead to huge leaps in productivity. Some of the feature requests I was hearing from
+      lead to huge leaps in welfare and productivity. Some of the feature requests I was hearing from
       individuals were pretty damn similar to what you might hear from startups in the US or Europe.
       When distribution is cheap, the impact potential is huge—especially if the government
       consciously fosters multiplicative effects like education and entrepreneurship.
