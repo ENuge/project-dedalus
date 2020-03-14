@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dist": "webpack",
-    "deploy": "npm run prod-server-build && gcloud app deploy",
+    "deploy": "npm run prod-server-build && gcloud app deploy --version v1",
     "prod-server-build": "babel --delete-dir-on-start --config-file ./.babelrc ./src/ -d build",
     "prestart": "npm-run-all dist prod-server-build",
     "start": "node build/app/app.js",

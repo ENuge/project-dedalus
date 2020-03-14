@@ -6,12 +6,12 @@ const ThoughtsContent = () => (
     <h1>219 Times Different: Ethiopia and Monaco, Back to Back</h1>
     <p>
       (The photos can be clicked to expand to full-screen (or right-click, "Open image in new tab"
-      to get the full raw image). Click them again to minimize them. Sorry if the tool is terrible,
+      to get the full raw image). Click them again to minimize them. I'm sorry that the tool is terrible—
       like all not-great things I{"'"}
       ll make it good when I have time. The portrait photos are also stretched. Sorry!)
     </p>
-    <ExpandableImage alt="Ethiopia's Merkato" src="/public/img/merkato_birds_eye.jpg" />
-    <ExpandableImage alt="Monaco's skyline" src="/public/img/monaco_skyline.jpg" />
+    <ExpandableImage alt="Ethiopia's Merkato" src="https://storage.cloud.google.com/dedalus-assets/img/merkato_birds_eye.jpeg" />
+    <ExpandableImage alt="Monaco's skyline" src="https://storage.cloud.google.com/dedalus-assets/img/monaco_skyline.jpeg" />
     <p>
       Ethiopia
       {"'"}s nominal GDP per capita, according to the World Bank, was $768 in 2017. [0] Monaco
@@ -33,7 +33,7 @@ const ThoughtsContent = () => (
       {"'"}s my still-forming impression of the two countries, an extremely reductive, simplistic
       cracked-lookingglass-from-a-distance view of over 100 million people.
     </p>
-    <ExpandableImage alt="Meskel Square" src="/public/img/meskel_square.jpg" />
+    <ExpandableImage alt="Meskel Square" src="https://storage.cloud.google.com/dedalus-assets/img/meskel_square.jpeg" />
     <p>
       We
       {"'"}
@@ -49,8 +49,7 @@ const ThoughtsContent = () => (
     </p>
     <ExpandableImage
       alt="Undeveloped and developed"
-      src="/public/img/undeveloped_and_developed.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/undeveloped_and_developed.jpeg"
     />
     <p>
       Walking through Addis is like walking through a time-lapse photo, just without the stylized
@@ -60,7 +59,7 @@ const ThoughtsContent = () => (
       point. The only constant in Addis is change—the city ten years from now will be completely
       different from the one I just visited.
     </p>
-    <ExpandableImage alt="Ethiopian coffee" src="/public/img/ethiopia_coffee.jpg" rotate90 />
+    <ExpandableImage alt="Ethiopian coffee" src="https://storage.cloud.google.com/dedalus-assets/img/ethiopia_coffee.jpeg" />
     <p>
       Well, change and coffee, I suppose. Around 15% of the country
       {"'"}s people derive their livelihoods from coffee. The rest just derive their well-being and
@@ -72,27 +71,23 @@ const ThoughtsContent = () => (
     </p>
     <ExpandableImage
       alt="Ethiopians carrying stuff"
-      src="/public/img/ethiopia_market_carrying.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/ethiopia_market_carrying.jpeg"
     />
     <ExpandableImage
       alt="Ethiopians carrying even more stuff"
-      src="/public/img/ethiopia_more_carrying.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/ethiopia_more_carrying.jpeg"
     />
     <ExpandableImage
       alt="Merkato full of stuff"
-      src="/public/img/ethiopia_market_stuff.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/ethiopia_market_stuff.jpeg"
     />
     <ExpandableImage
       alt="Insides of Merkato—showing off cool basketry"
-      src="/public/img/ethiopia_market_indoor.jpg"
+      src="https://storage.cloud.google.com/dedalus-assets/img/ethiopia_market_indoor.jpeg"
     />
     <ExpandableImage
       alt="Lalibela market in the north of Ethiopia"
-      src="/public/img/lalibela_market.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/lalibela_market.jpeg"
     />
     <p>
       I{"'"}m getting tired of narrating, so I{"'"}m going to turn this over more to the photo side
@@ -126,35 +121,31 @@ const ThoughtsContent = () => (
       {"'"}s green (we
       {"'"}d be more used to its smell...which approximates a bad egg times 100).
     </p>
-    <ExpandableImage alt="The scenery in Lalibela" src="/public/img/lalibela_scenery_1.jpg" />
+    <ExpandableImage alt="The scenery in Lalibela" src="https://storage.cloud.google.com/dedalus-assets/img/lalibela_scenery_1.jpeg" />
     <ExpandableImage
       alt="Lalibela rock-hewn churches"
-      src="/public/img/lalibela_churches.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/lalibela_churches.jpeg"
     />
     <ExpandableImage
       alt="Lalibela rockier scenery"
-      src="/public/img/lalibela_beautiful_scenery.jpg"
+      src="https://storage.cloud.google.com/dedalus-assets/img/lalibela_beautiful_scenery.jpeg"
     />
-    <ExpandableImage alt="Camels in Danakil Depression" src="/public/img/camels_in_desert.jpg" />
-    <ExpandableImage alt="Mad Max rocks" src="/public/img/mad_max_rocks.jpg" />
-    <ExpandableImage alt="Brown salt flats" src="/public/img/salt_flats_brown.jpg" rotate90 />
-    <ExpandableImage alt="Danakil Crags" src="/public/img/danakil_scrags.jpg" />
-    <ExpandableImage alt="Lalibela salt lakes" src="/public/img/salt_lake.jpg" />
+    <ExpandableImage alt="Camels in Danakil Depression" src="https://storage.cloud.google.com/dedalus-assets/img/camels_in_desert.jpeg" />
+    <ExpandableImage alt="Mad Max rocks" src="https://storage.cloud.google.com/dedalus-assets/img/mad_max_rocks.jpeg" />
+    <ExpandableImage alt="Brown salt flats" src="https://storage.cloud.google.com/dedalus-assets/img/salt_flats_brown.jpeg" />
+    <ExpandableImage alt="Danakil Crags" src="https://storage.cloud.google.com/dedalus-assets/img/danakil_scrags.jpeg" />
+    <ExpandableImage alt="Lalibela salt lakes" src="https://storage.cloud.google.com/dedalus-assets/img/salt_lake.jpeg" />
     <ExpandableImage
       alt="Danakil salt flats—many colors!"
-      src="/public/img/danakil_salt_multicolor_2.jpg"
-      rotate90
-    />
-    <ExpandableImage
-      alt="Danakil salt flats—many colors!"
-      src="/public/img/danakil_salt_multicolor.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/danakil_salt_multicolor_2.jpeg"
     />
     <ExpandableImage
       alt="Danakil salt flats—many colors!"
-      src="/public/img/danakil_salt_flats_3.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/danakil_salt_multicolor.jpeg"
+    />
+    <ExpandableImage
+      alt="Danakil salt flats—many colors!"
+      src="https://storage.cloud.google.com/dedalus-assets/img/danakil_salt_flats_3.jpeg"
     />
     <p>
       The Mad Max-style rock mountains were formed by surface ruptures thousands (millions? a really
@@ -212,12 +203,11 @@ const ThoughtsContent = () => (
     <h1>And now, over to you, Monaco. </h1>
     <ExpandableImage
       alt="Outside the Monte Carlo—note the casual Maybach"
-      src="/public/img/monte_carlo_outside_maybach.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/monte_carlo_outside_maybach.jpeg"
     />
     <ExpandableImage
       alt="Side view of the Monaco skyline"
-      src="/public/img/monaco_skyline_side.jpg"
+      src="https://storage.cloud.google.com/dedalus-assets/img/monaco_skyline_side.jpeg"
     />
     <p>
       Monaco is absolutely stunning, I{"'"}
@@ -262,8 +252,7 @@ const ThoughtsContent = () => (
     </p>
     <ExpandableImage
       alt="Pretty apartments in Monaco"
-      src="/public/img/monaco_pretty_apartments.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/monaco_pretty_apartments.jpeg"
     />
     <p>
       I suppose the main takeaway here is something along the lines of: {'"'}
@@ -284,19 +273,16 @@ const ThoughtsContent = () => (
     </p>
     <ExpandableImage
       alt="A walkway leading to Monaco's subway. Very casual."
-      src="/public/img/monaco_inside_subway.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/monaco_inside_subway.jpeg"
     />
-    <ExpandableImage alt="A view of Monaco's port" src="/public/img/monaco_port.jpg" />
+    <ExpandableImage alt="A view of Monaco's port" src="https://storage.cloud.google.com/dedalus-assets/img/monaco_port.jpeg" />
     <ExpandableImage
       alt="Monaco setting up for the Grand Prix—you can walk right on the tracks!"
-      src="/public/img/monaco_before_grand_prix.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/monaco_before_grand_prix.jpeg"
     />
     <ExpandableImage
       alt="The inside of the Casino de Monte Carlo"
-      src="/public/img/monte_carlo_inside.jpg"
-      rotate90
+      src="https://storage.cloud.google.com/dedalus-assets/img/monte_carlo_inside.jpeg"
     />
     <p>
       [0]{' '}
