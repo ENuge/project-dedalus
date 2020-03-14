@@ -2,15 +2,15 @@
 
 import '@babel/polyfill';
 import React from 'react';
-import {renderToString} from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import express from 'express';
-import type {$Request, $Response} from 'express';
+import type { $Request, $Response } from 'express';
 
 import IndexReactBase from '../client/IndexReactBase';
 import DedalusReactBase from '../client/DedalusReactBase';
 import htmlTemplate from '../client/template';
 import handleQotd from './qotd';
-import {getStrava, hydrateStrava, postStrava} from './strava';
+import { getStrava, hydrateStrava, postStrava } from './strava';
 // import {getAnki, postAnki} from './anki';
 
 const app = express();
@@ -33,7 +33,9 @@ const handleDedalusRender = (req: $Request, res: $Response) => {
 };
 
 app.get('/', handleIndexRender);
+// Eventually, each subpage should get its own separate renderer thing here or something.
 app.get(availableTopLevelPages, handleIndexRender);
+app.get('/thoughts/monaco-ethiopia-2018', handleIndexRender);
 app.get('/dedalus', handleDedalusRender);
 
 app.get('/ajax/qotd', handleQotd);

@@ -10,8 +10,8 @@ const ThoughtsContent = () => (
       like all not-great things I{"'"}
       ll make it good when I have time. The portrait photos are also stretched. Sorry!)
     </p>
-    <ExpandableImage alt="Ethiopia's Merkato" src="public/img/merkato_birds_eye.jpg" />
-    <ExpandableImage alt="Monaco's skyline" src="public/img/monaco_skyline.jpg" />
+    <ExpandableImage alt="Ethiopia's Merkato" src="/public/img/merkato_birds_eye.jpg" />
+    <ExpandableImage alt="Monaco's skyline" src="/public/img/monaco_skyline.jpg" />
     <p>
       Ethiopia
       {"'"}s nominal GDP per capita, according to the World Bank, was $768 in 2017. [0] Monaco
@@ -33,7 +33,7 @@ const ThoughtsContent = () => (
       {"'"}s my still-forming impression of the two countries, an extremely reductive, simplistic
       cracked-lookingglass-from-a-distance view of over 100 million people.
     </p>
-    <ExpandableImage alt="Meskel Square" src="public/img/meskel_square.jpg" />
+    <ExpandableImage alt="Meskel Square" src="/public/img/meskel_square.jpg" />
     <p>
       We
       {"'"}
@@ -49,7 +49,7 @@ const ThoughtsContent = () => (
     </p>
     <ExpandableImage
       alt="Undeveloped and developed"
-      src="public/img/undeveloped_and_developed.jpg"
+      src="/public/img/undeveloped_and_developed.jpg"
       rotate90
     />
     <p>
@@ -60,7 +60,7 @@ const ThoughtsContent = () => (
       point. The only constant in Addis is change—the city ten years from now will be completely
       different from the one I just visited.
     </p>
-    <ExpandableImage alt="Ethiopian coffee" src="public/img/ethiopia_coffee.jpg" rotate90 />
+    <ExpandableImage alt="Ethiopian coffee" src="/public/img/ethiopia_coffee.jpg" rotate90 />
     <p>
       Well, change and coffee, I suppose. Around 15% of the country
       {"'"}s people derive their livelihoods from coffee. The rest just derive their well-being and
@@ -72,26 +72,26 @@ const ThoughtsContent = () => (
     </p>
     <ExpandableImage
       alt="Ethiopians carrying stuff"
-      src="public/img/ethiopia_market_carrying.jpg"
+      src="/public/img/ethiopia_market_carrying.jpg"
       rotate90
     />
     <ExpandableImage
       alt="Ethiopians carrying even more stuff"
-      src="public/img/ethiopia_more_carrying.jpg"
+      src="/public/img/ethiopia_more_carrying.jpg"
       rotate90
     />
     <ExpandableImage
       alt="Merkato full of stuff"
-      src="public/img/ethiopia_market_stuff.jpg"
+      src="/public/img/ethiopia_market_stuff.jpg"
       rotate90
     />
     <ExpandableImage
       alt="Insides of Merkato—showing off cool basketry"
-      src="public/img/ethiopia_market_indoor.jpg"
+      src="/public/img/ethiopia_market_indoor.jpg"
     />
     <ExpandableImage
       alt="Lalibela market in the north of Ethiopia"
-      src="public/img/lalibela_market.jpg"
+      src="/public/img/lalibela_market.jpg"
       rotate90
     />
     <p>
@@ -126,34 +126,34 @@ const ThoughtsContent = () => (
       {"'"}s green (we
       {"'"}d be more used to its smell...which approximates a bad egg times 100).
     </p>
-    <ExpandableImage alt="The scenery in Lalibela" src="public/img/lalibela_scenery_1.jpg" />
+    <ExpandableImage alt="The scenery in Lalibela" src="/public/img/lalibela_scenery_1.jpg" />
     <ExpandableImage
       alt="Lalibela rock-hewn churches"
-      src="public/img/lalibela_churches.jpg"
+      src="/public/img/lalibela_churches.jpg"
       rotate90
     />
     <ExpandableImage
       alt="Lalibela rockier scenery"
-      src="public/img/lalibela_beautiful_scenery.jpg"
+      src="/public/img/lalibela_beautiful_scenery.jpg"
     />
-    <ExpandableImage alt="Camels in Danakil Depression" src="public/img/camels_in_desert.jpg" />
-    <ExpandableImage alt="Mad Max rocks" src="public/img/mad_max_rocks.jpg" />
-    <ExpandableImage alt="Brown salt flats" src="public/img/salt_flats_brown.jpg" rotate90 />
-    <ExpandableImage alt="Danakil Crags" src="public/img/danakil_scrags.jpg" />
-    <ExpandableImage alt="Lalibela salt lakes" src="public/img/salt_lake.jpg" />
+    <ExpandableImage alt="Camels in Danakil Depression" src="/public/img/camels_in_desert.jpg" />
+    <ExpandableImage alt="Mad Max rocks" src="/public/img/mad_max_rocks.jpg" />
+    <ExpandableImage alt="Brown salt flats" src="/public/img/salt_flats_brown.jpg" rotate90 />
+    <ExpandableImage alt="Danakil Crags" src="/public/img/danakil_scrags.jpg" />
+    <ExpandableImage alt="Lalibela salt lakes" src="/public/img/salt_lake.jpg" />
     <ExpandableImage
       alt="Danakil salt flats—many colors!"
-      src="public/img/danakil_salt_multicolor_2.jpg"
+      src="/public/img/danakil_salt_multicolor_2.jpg"
       rotate90
     />
     <ExpandableImage
       alt="Danakil salt flats—many colors!"
-      src="public/img/danakil_salt_multicolor.jpg"
+      src="/public/img/danakil_salt_multicolor.jpg"
       rotate90
     />
     <ExpandableImage
       alt="Danakil salt flats—many colors!"
-      src="public/img/danakil_salt_flats_3.jpg"
+      src="/public/img/danakil_salt_flats_3.jpg"
       rotate90
     />
     <p>
@@ -212,12 +212,12 @@ const ThoughtsContent = () => (
     <h1>And now, over to you, Monaco. </h1>
     <ExpandableImage
       alt="Outside the Monte Carlo—note the casual Maybach"
-      src="public/img/monte_carlo_outside_maybach.jpg"
+      src="/public/img/monte_carlo_outside_maybach.jpg"
       rotate90
     />
     <ExpandableImage
       alt="Side view of the Monaco skyline"
-      src="public/img/monaco_skyline_side.jpg"
+      src="/public/img/monaco_skyline_side.jpg"
     />
     <p>
       Monaco is absolutely stunning, I{"'"}
@@ -262,7 +262,7 @@ const ThoughtsContent = () => (
     </p>
     <ExpandableImage
       alt="Pretty apartments in Monaco"
-      src="public/img/monaco_pretty_apartments.jpg"
+      src="/public/img/monaco_pretty_apartments.jpg"
       rotate90
     />
     <p>
@@ -284,18 +284,18 @@ const ThoughtsContent = () => (
     </p>
     <ExpandableImage
       alt="A walkway leading to Monaco's subway. Very casual."
-      src="public/img/monaco_inside_subway.jpg"
+      src="/public/img/monaco_inside_subway.jpg"
       rotate90
     />
-    <ExpandableImage alt="A view of Monaco's port" src="public/img/monaco_port.jpg" />
+    <ExpandableImage alt="A view of Monaco's port" src="/public/img/monaco_port.jpg" />
     <ExpandableImage
       alt="Monaco setting up for the Grand Prix—you can walk right on the tracks!"
-      src="public/img/monaco_before_grand_prix.jpg"
+      src="/public/img/monaco_before_grand_prix.jpg"
       rotate90
     />
     <ExpandableImage
       alt="The inside of the Casino de Monte Carlo"
-      src="public/img/monte_carlo_inside.jpg"
+      src="/public/img/monte_carlo_inside.jpg"
       rotate90
     />
     <p>
