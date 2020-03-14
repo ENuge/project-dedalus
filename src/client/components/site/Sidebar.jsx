@@ -6,9 +6,6 @@ const Sidebar = () => (
     <div className="sidebar-nav-item">
       <a href="/about">about</a>
     </div>
-    <div className="sidebar-nav-item sidebar-nav-item-coffee">
-      <a href="/coffee">coffee</a>
-    </div>
     <div className="sidebar-nav-item">
       <a href="/tech">tech</a>
     </div>

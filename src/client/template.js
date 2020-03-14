@@ -6,11 +6,24 @@ const htmlTemplate = (reactDom: string, appType: string) => `
     <!DOCTYPE html>
       <html>
         <head>
+          <!-- Global site tag (gtag.js) - Google Analytics -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142129400-1"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-142129400-1');
+          </script>
+          <!-- End Google Analytics Stuff -->
+
           <meta charset="utf-8">
           <title>Project Dedalus</title>
           <link rel="shortcut icon" type="image/ico" href="public/favicon.ico"/>
           <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,300,400" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+          <!-- The link below is to source-serif-pro: light+regular and bold/italics. -->
+          <link rel="stylesheet" href="https://use.typekit.net/wih6fdh.css">
           <link rel="stylesheet" type="text/css" href="public/index.css"/>
         </head>
       

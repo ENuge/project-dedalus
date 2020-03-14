@@ -15,16 +15,6 @@ dice around the solarizeds until I was satisfied. */
   --daily-activity-cell-size: 20px;
 }
 
-@font-face {
-  font-family: 'LiterataBook-Regular';
-  src: url('font/LiterataBook-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'LiterataBook-Italic';
-  src: url('path/LiterataBook-Italic.woff') format('woff');
-}
-
 /* Base CSS Resets */
 html,
 body {
@@ -33,6 +23,7 @@ body {
   padding: 0;
   font-weight: 300;
   font-family: 'Fira Sans', sans-serif;
+  background-color: #fcfcfc;
 }
 *,
 *:before,
@@ -40,9 +31,21 @@ body {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: #006eff;
+}
+
 #dedalus-header {
   height: var(--header-height);
   background-color: var(--bg-header);
+}
+
+#ParisCountdown {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 40px;
 }
 
 /* TODO: For now, I'm going with pure text. */
@@ -71,6 +74,8 @@ body {
 
 #sidebar-nav {
   font-family: 'Didact Gothic', sans-serif;
+  position: absolute;
+  top: 106px;
   font-size: 18px;
   flex-grow: 0;
 
@@ -81,28 +86,28 @@ body {
   flex-wrap: wrap;
 }
 
-/* Basically positions the sidebar nav to the left and
-lets everything else take up the rest of page */
+/* TODO: Empty for now, but a container that lets content
+beyond the text width limit exist on page. */
 #main-content-structure {
-  display: flex;
-
-  /* Presumably this should make the sidebar responsive? */
-  flex-wrap: wrap;
 }
 
 #main-content {
-  font-family: 'LiterataBook-Regular', serif;
+  font-family: source-serif-pro, serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #1b2733;
 
   /* For paragraph text, _not_ for full-screen images etc. */
   max-width: 500px;
   line-height: 1.4;
   font-size: 18px;
-  margin-left: 44px;
-  margin-right: 8px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #main-content h1 {
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 300;
 }
 
 #main-content p {
@@ -110,7 +115,14 @@ lets everything else take up the rest of page */
 }
 
 #main-content em {
-  font-family: 'LiterataBook-Italic', italic;
+  font-family: source-serif-pro, serif;
+  font-style: italic;
+}
+
+#big-picture {
+  background-color: black;
+  width: 100%;
+  height: 800px;
 }
 
 .sidebar-nav-item {
@@ -247,6 +259,28 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
   height: 150px;
 }
 
+.ExpandableImage-expanded {
+  position: fixed;
+  width: 100%;
+  /* height: 100%; */
+  /* forces it to be an overlay on everything */
+  z-index: 5000;
+  top: 10px;
+  left: 50px;
+}
+
+img {
+  image-orientation: from-image;
+}
+
+.rotate90 {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
 @media only screen and (max-width: 700px) {
   #sidebar-nav {
     /* On small screen, space the nav options horizontally,
@@ -255,6 +289,12 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
     flex-direction: row;
     flex-grow: 1;
     justify-content: space-between;
+
+    /* HACK: These width values happen to get the rightmost sidebar
+    element aligned properly, but it's purely by visual inspection
+    and assumes Chrome's scrollbar width. */
+    width: calc(100% - 24px);
+    padding-right: 24px;
 
     margin-right: 24px;
   }
@@ -265,7 +305,10 @@ at ~60% screen size, and kinda dumb as the page gets smaller. */
     margin-right: 0px;
   }
 
-  #main-content {
-    margin-left: 8px;
+  #main-content-structure {
+    /* The sidebar is absolute-positioned, but horizontally at small
+    sizes. This pushes the main content to be below it without overlapping.
+    The number is based purely on visual inspection (whee!). */
+    margin-top: 62px;
   }
 }
