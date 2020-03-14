@@ -21,7 +21,7 @@ const ThoughtsContent = () => (
       {"'"}s total productive output eclipses the output of the mean Ethiopian
       {"'"}s over an entire year. These numbers are the basis of the {'"'}
       219 times different
-      {'"'} mentioned in the title
+      {'"'} mentioned in the title.
     </p>
     <p>
       Somewhat thankfully, those numbers don
@@ -31,19 +31,17 @@ const ThoughtsContent = () => (
     <p>
       So, here
       {"'"}s my still-forming impression of the two countries, an extremely reductive, simplistic
-      cracked-lookingglass-from-a-distance view of over 100 million people. If you
-      {"'"}d prefer some brow-pushing brownie points, you can consider it a modern
-      Dionysian/Apollonian dialectic, in economic terms.
+      cracked-lookingglass-from-a-distance view of over 100 million people.
     </p>
     <ExpandableImage alt="Meskel Square" src="public/img/meskel_square.jpg" />
     <p>
       We
       {"'"}
-      ll start where I landed - Meskel Square, the first stop on my first day in Addis Ababa,
+      ll start where I landed—Meskel Square, the first stop on my first day in Addis Ababa,
       Ethiopia
-      {"'"}s capital. Addis is growing. I can point you again at GDP - Ethiopia
+      {"'"}s capital. Addis is growing. I can point you again at GDP—Ethiopia
       {"'"}s GDP growth in the past decade has been hovering around 10% per year. Humans are really
-      bad at understanding compounding growth - but basically, imagine a curve that grows really
+      bad at understanding compounding growth—but basically, imagine a curve that grows really
       steeply. That doubles just after 7 years (and continues growing even quicker relative to that
       first point in time!). That
       {"'"}s Ethiopia by the numbers[2], and it
@@ -57,9 +55,9 @@ const ThoughtsContent = () => (
     <p>
       Walking through Addis is like walking through a time-lapse photo, just without the stylized
       red streaks of taillights. There are very few old buildings, but very many unfinished ones -
-      but not unfinished as in abandoned. Any one of those buildings with loose cinder blocks or
+      but <em>not</em> unfinished as in abandoned. Any one of those buildings with loose cinder blocks or
       exposed steel beams poking through poured concrete may grow another floor, or a roof, at any
-      point. The only constant in Addis is change - the city ten years from now will be completely
+      point. The only constant in Addis is change—the city ten years from now will be completely
       different from the one I just visited.
     </p>
     <ExpandableImage alt="Ethiopian coffee" src="public/img/ethiopia_coffee.jpg" rotate90 />
@@ -70,7 +68,7 @@ const ThoughtsContent = () => (
       in northern Ethiopia, best-known for being the site of the rock-hewn Lalibela churches. The
       three rounds of progressively-darker-roasted beans I had there, a thick but rather tasty brew,
       made up just one of the three such ceremonies Dennis said they have there every day. So 9
-      strong cups of coffee a day - and I thought my 2-3 a day was bad!
+      strong cups of coffee a day—and I thought my 2-3 a day was bad!
     </p>
     <ExpandableImage
       alt="Ethiopians carrying stuff"
@@ -88,7 +86,7 @@ const ThoughtsContent = () => (
       rotate90
     />
     <ExpandableImage
-      alt="Insides of Merkato - showing off cool basketry"
+      alt="Insides of Merkato—showing off cool basketry"
       src="public/img/ethiopia_market_indoor.jpg"
     />
     <ExpandableImage
@@ -101,16 +99,16 @@ const ThoughtsContent = () => (
       of a photo {'"'}
       essay
       {'"'} (which makes it feel like homework. I know, I try.). But a few other words: the people
-      of Ethiopia are incredibly friendly, and inspirationally industrious - probably out of need.
+      of Ethiopia are incredibly friendly, and inspirationally industrious—probably out of need.
       But all the same, the raw creative spirit, the ability to go out and try without having a
       guide or top-down authority, largely doesn
       {"'"}t exist in the highly-educated, stratified Western world. There are obvious benefits to
       the likes of OSHA, but seeing others get by because they need to without the guard rails we
-      take for granted makes me think a bit about the power structures I rode to get where I am - at
+      take for granted makes me think a bit about the power structures I rode to get where I am—at
       a place where I can afford to observe all this. You can see what would be considered western
       enterpreneurialism in Addis
       {"'"}s Merkato, the world
-      {"'"}s largest outdoor market - which employs an estimated 13,000 people in 7,100 business
+      {"'"}s largest outdoor market—which employs an estimated 13,000 people in 7,100 business
       entities. People sell everything, carry everything, make everything, here. There is so
       much...everything.
     </p>
@@ -144,17 +142,17 @@ const ThoughtsContent = () => (
     <ExpandableImage alt="Danakil Crags" src="public/img/danakil_scrags.jpg" />
     <ExpandableImage alt="Lalibela salt lakes" src="public/img/salt_lake.jpg" />
     <ExpandableImage
-      alt="Danakil salt flats - many colors!"
+      alt="Danakil salt flats—many colors!"
       src="public/img/danakil_salt_multicolor_2.jpg"
       rotate90
     />
     <ExpandableImage
-      alt="Danakil salt flats - many colors!"
+      alt="Danakil salt flats—many colors!"
       src="public/img/danakil_salt_multicolor.jpg"
       rotate90
     />
     <ExpandableImage
-      alt="Danakil salt flats - many colors!"
+      alt="Danakil salt flats—many colors!"
       src="public/img/danakil_salt_flats_3.jpg"
       rotate90
     />
@@ -183,7 +181,7 @@ const ThoughtsContent = () => (
       infrastructure (wiring, etc) is mostly good enough, where applying very modern solutions can
       lead to huge leaps in productivity. Some of the feature requests I was hearing from
       individuals were pretty damn similar to what you might hear from startups in the US or Europe.
-      When distribution is cheap, the impact potential is huge - especially if the government
+      When distribution is cheap, the impact potential is huge—especially if the government
       consciously fosters multiplicative effects like education and entrepreneurship.
     </p>
     <p>
@@ -195,10 +193,10 @@ const ThoughtsContent = () => (
       {"'"}d understand and find yourself doing the same). Water is frequently the largest expense -
       the only drinkable water is bottled, and it
       {"'"}s not cheap. UN foreign aid is a lifeblood to some of these villages. China
-      {"'"}s Belt & Road Initiative has helped to a significant degree - it
+      {"'"}s Belt & Road Initiative has helped to a significant degree—it
       {"'"}s visible to the point where I was confused for being a {'"'}
       China man
-      {'"'}- but teaching people to fish (read: build infrastructure) is of limited use when there
+      {'"'}—but teaching people to fish (read: build infrastructure) is of limited use when there
       {"'"}s no water (literally no water and very little arable land).
     </p>
     <p>
@@ -213,7 +211,7 @@ const ThoughtsContent = () => (
     </p>
     <h1>And now, over to you, Monaco. </h1>
     <ExpandableImage
-      alt="Outside the Monte Carlo - note the casual Maybach"
+      alt="Outside the Monte Carlo—note the casual Maybach"
       src="public/img/monte_carlo_outside_maybach.jpg"
       rotate90
     />
@@ -224,10 +222,10 @@ const ThoughtsContent = () => (
     <p>
       Monaco is absolutely stunning, I{"'"}
       ll admit that. But one of my main takeaways from leaving the city was that there
-      {"'"}s nothing significantly better about their way of life than my own - or to compare to a
+      {"'"}s nothing significantly better about their way of life than my own—or to compare to a
       more similar environment, life on the rest of the côte d{"'"}
       azur. Nice, for instance, is a cheaper place to live than anywhere I{"'"}
-      ve lived. (Which may say more about myself than anything.) Presumably take-home income is
+      ve lived. (Which almost certainly says more about myself than anything.) Presumably take-home income is
       adjusted for that and I don
       {"'"}t feel like looking at the numbers, but let
       {"'"}s assume it
@@ -236,15 +234,17 @@ const ThoughtsContent = () => (
     <p>
       So, basically, what the wealthy get for their wealth, over your typical developed country,
       appeared to me to be mostly status symbols. Maybe they keep all the super-cool secret stuff
-      indoors. Or maybe I{"'"}m underestimating my own privilege - I work as a software engineer,
-      and software as an industry has been great for me.
+      indoors. To be very clear, I say all of this from a position of privilege—I work as a software engineer,
+      and software as an industry has been great for me. There are many people in developed countries struggling
+      to get by. This might be more accurately comparing the top quartile of a standard developed country with
+      the top 10% in Monaco, which may not even represent that large of an income disparity.
     </p>
     <p>
       But when I look at the official landing page for the Mercedes-Maybach, which starts at just
       shy of $200,000, I literally do not see a single feature mentioned that
       {"'"}s not available in any other modern car. The page actually does not mention a single
       utilitarian feature, at all. It does repeat over and over again the exclusivity and
-      {'"'}
+      {' "'}
       individuality
       {'"'} of the car. I was under the impression luxury purchases were supposed to imply that,
       mostly via their cost, but I guess it
@@ -266,15 +266,15 @@ const ThoughtsContent = () => (
       rotate90
     />
     <p>
-      I suppose the main takeaway here is simply: {'"'}
+      I suppose the main takeaway here is something along the lines of: {'"'}
       Think you
       {"'"}
       re escaping and run into yourself.
       {'"'} People are the same everywhere. How they live, act, and what they value is heavily,
       heavily influenced by society and the environment. Combining the two trips focuses a strong
       light on the middle, where I find myself. Should the experiences on these trips, or reflecting
-      on this now, change my perception of self? Probably not all that much - it would be a fickle
-      25 year old to have life determined by a chance two weeks - but in the never-ending decision
+      on this now, change my perception of self? Probably not all that much—it would be a fickle
+      25 year old to have life determined by a chance two weeks—but in the never-ending decision
       tree that is life, it is important to recognize that the roots as well as the branches could
       have all been different.
     </p>
@@ -289,7 +289,7 @@ const ThoughtsContent = () => (
     />
     <ExpandableImage alt="A view of Monaco's port" src="public/img/monaco_port.jpg" />
     <ExpandableImage
-      alt="Monaco setting up for the Grand Prix - you can walk right on the tracks!"
+      alt="Monaco setting up for the Grand Prix—you can walk right on the tracks!"
       src="public/img/monaco_before_grand_prix.jpg"
       rotate90
     />
@@ -302,18 +302,18 @@ const ThoughtsContent = () => (
       [0]{' '}
       <a href="https://data.worldbank.org/indicator/ny.gdp.pcap.cd">
         https://data.worldbank.org/indicator/ny.gdp.pcap.cd
-      </a>{' '}
+      </a>
       , search the page for Ethiopia.
     </p>
     <p>
       [1]{' '}
       <a href="https://data.worldbank.org/indicator/ny.gdp.pcap.cd">
         https://data.worldbank.org/indicator/ny.gdp.pcap.cd
-      </a>{' '}
+      </a>
       , search the page for Monaco, do a bit of math...voilà.
     </p>
     <p>
-      [2] And to continue to be explicit with the GDP-poo poo
+      [2] And to continue to be explicit with the GDP poo poo
       {"'"}
       ing, my home country Ireland is frequently number 2 for highest GDP growth rate in the past
       decade. That
